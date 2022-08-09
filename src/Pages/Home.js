@@ -6,7 +6,7 @@ import Trending from '~/Components/Trending';
 function Home() {
     return (
         <div className="my-12">
-            <Videobgr />
+            {/* <Videobgr /> */}
             <Bestsale />
             <Trending />
         </div>

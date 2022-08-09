@@ -9,7 +9,7 @@ function Products() {
     const [filters, setFilters] = useState({
         categoryIds: [],
         size: [],
-        color: [],
+        colors: [],
     });
 
     const [page, setPage] = useState(1);
@@ -24,6 +24,8 @@ function Products() {
                 _sort: 'originalPrice',
                 _order: order,
                 category: filters.categoryIds,
+                color: filters.colors,
+                size: filters.size,
                 // filters.categoryIds.length === 0
                 //     ? null
                 //     : filters.categoryIds,
@@ -42,11 +44,10 @@ function Products() {
     const handleOrderChangeDesc = () => {
         setOrder('desc');
     };
-    console.log('product render');
     const handleFiltersChange = (newFilters) => {
         // console.log(newFilters);
         setFilters((prev) => {
-            // console.log({ ...prev, ...newFilters });
+            console.log({ ...prev, ...newFilters });
             return { ...prev, ...newFilters };
         });
     };

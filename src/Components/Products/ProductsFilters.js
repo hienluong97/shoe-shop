@@ -1,10 +1,9 @@
-import React, { memo } from 'react';
+import React from 'react';
 import CategoryFilter from './CategoryFilter';
 import SizeFilter from './SizeFilter';
 import ColorFilter from './ColorFilter';
 
 function ProductsFilters({ filters, onChange }) {
-    console.log('product filter render');
     const HandleCategoryChange = (newCategoryIds) => {
         // console.log(newCategoryIds);
         if (!onChange) return;
@@ -14,13 +13,31 @@ function ProductsFilters({ filters, onChange }) {
         };
         onChange(newFilters);
     };
+
+    const HandleSizeChange = (newSize) => {
+        if (!onChange) return;
+        const newFilters = {
+            ...filters,
+            size: newSize,
+        };
+        onChange(newFilters);
+    };
+    const HandleColorChange = (newColors) => {
+        if (!onChange) return;
+        const newFilters = {
+            ...filters,
+            colors: newColors,
+        };
+        onChange(newFilters);
+    };
+
     return (
         <div>
             <CategoryFilter onChange={HandleCategoryChange} />
-            <SizeFilter />
-            <ColorFilter />
+            <SizeFilter onChange={HandleSizeChange} />
+            <ColorFilter onChange={HandleColorChange} />
         </div>
     );
 }
 
-export default memo(ProductsFilters);
+export default ProductsFilters;

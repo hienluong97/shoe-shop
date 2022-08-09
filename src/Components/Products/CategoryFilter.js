@@ -5,8 +5,14 @@ function CategoryFilter({ onChange }) {
     const [categories, setCategories] = useState([]);
     const [categoryIds, setCategoryIds] = useState([]);
     // console.log(categoryIds);
-    console.log('category filter render');
     const hanldeChangeCategory = (id) => {
+        // setCategoryIds((prev) => {
+        //     if (categoryIds.includes(id)) {
+        //         return prev.filter((x) => x !== id);
+        //     } else {
+        //         return [...prev, id];
+        //     }
+        // });
         setCategoryIds((prev) => {
             if (categoryIds.includes(id)) {
                 return prev.filter((x) => x !== id);
@@ -14,11 +20,13 @@ function CategoryFilter({ onChange }) {
                 return [...prev, id];
             }
         });
-
-        // categoryIds.push(id);
-        // console.log(categoryIds);
-        onChange(categoryIds);
     };
+
+    useEffect(() => {
+        onChange(categoryIds);
+    }, [categoryIds]);
+
+    console.log('render');
 
     useEffect(() => {
         (async () => {
@@ -41,7 +49,6 @@ function CategoryFilter({ onChange }) {
                         <input
                             type="checkbox"
                             onChange={() => hanldeChangeCategory(category.id)}
-                            value={category.name}
                             checked={categoryIds.includes(category.id)}
                         />
                         <span className="checkmark"></span>
