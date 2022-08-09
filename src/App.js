@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Layout from './Layouts';
+import { Route, Routes } from 'react-router-dom';
+import Home from '../src/Pages/Home';
+import Products from '../src/Pages/Products';
+import About from '../src/Pages/About';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/about" element={<About />} />
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;
+
+// https://shoe-data.herokuapp.com/products
