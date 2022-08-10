@@ -3,36 +3,39 @@ import { useEffect, useState } from 'react';
 import productsApi from '~/API/ProductsApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Pagination from '@mui/material/Pagination';
-import ProductsFilters from '~/Components/Products/ProductsFilters';
+import ProductsFilters from '~/Components/ProductFilters/ProductsFilters';
+import ProductlistLoading from '~/Components/ProductlistLoading';
 
 function Products() {
     const [filters, setFilters] = useState({
         categoryIds: [],
         size: [],
         colors: [],
+        active: false,
     });
-
+    const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [order, setOrder] = useState('asc');
     const [filterProductList, setFilterProductList] = useState([]);
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            const data = await productsApi.getAll({
-                _page: page,
-                _limit: 9,
-                _sort: 'originalPrice',
-                _order: order,
-                category: filters.categoryIds,
-                color: filters.colors,
-                size: filters.size,
-                // filters.categoryIds.length === 0
-                //     ? null
-                //     : filters.categoryIds,
-            });
-            setFilterProductList(data);
-        };
-        fetchProducts();
+        (async () => {
+            try {
+                const data = await productsApi.getAll({
+                    _page: page,
+                    _limit: 9,
+                    _sort: 'originalPrice',
+                    _order: order,
+                    category: filters.categoryIds,
+                    color: filters.colors,
+                    size: filters.size,
+                });
+                setFilterProductList(data);
+                setLoading(false);
+            } catch {
+                console.log('error');
+            }
+        })();
     }, [page, order, filters]);
 
     const handleChangePage = (e, value) => {
@@ -45,9 +48,7 @@ function Products() {
         setOrder('desc');
     };
     const handleFiltersChange = (newFilters) => {
-        // console.log(newFilters);
         setFilters((prev) => {
-            console.log({ ...prev, ...newFilters });
             return { ...prev, ...newFilters };
         });
     };
@@ -70,109 +71,6 @@ function Products() {
                             filters={filters}
                             onChange={handleFiltersChange}
                         />
-
-                        {/* <div>
-                            <h6 className="text-xs font-medium">
-                                Danh mục sản phẩm
-                            </h6>
-                            <label className="checkbox-container">
-                                Converse
-                                <input
-                                    type="checkbox"
-                                    value="Converse"
-                                    onChange={handleOnChangeCheckbox}
-                                />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                Vans
-                                <input
-                                    type="checkbox"
-                                    value="Vans"
-                                    onChange={handleOnChangeCheckbox}
-                                />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                Adidas
-                                <input
-                                    type="checkbox"
-                                    value="Adidas"
-                                    onChange={handleOnChangeCheckbox}
-                                />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                Puma
-                                <input
-                                    type="checkbox"
-                                    value="Puma"
-                                    onChange={handleOnChangeCheckbox}
-                                />
-                                <span className="checkmark"></span>
-                            </label>
-                        </div> */}
-                        {/* <div>
-                            <h6 className="text-xs font-medium mt-3">
-                                Kích cỡ sản phẩm
-                            </h6>
-                            <label className="checkbox-container">
-                                36
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                37
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                38
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                            </label>
-
-                            <label className="checkbox-container">
-                                39
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                            </label>
-                        </div> */}
-                        {/* <div>
-                            <h6 className="text-xs font-medium mt-3">
-                                Màu sắc
-                            </h6>
-                            <div>
-                                <label className="checkbox-container">
-                                    Mau trang
-                                    <input type="checkbox" />
-                                    <span className="checkmark"></span>
-                                </label>
-
-                                <label className="checkbox-container">
-                                    Mau den
-                                    <input type="checkbox" />
-                                    <span className="checkmark"></span>
-                                </label>
-
-                                <label className="checkbox-container">
-                                    Mau do
-                                    <input type="checkbox" />
-                                    <span className="checkmark"></span>
-                                </label>
-
-                                <label className="checkbox-container">
-                                    Mau hong
-                                    <input type="checkbox" />
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                        </div> */}
                     </div>
                     <div className="w-3/4">
                         <div className="flex justify-between">
@@ -195,68 +93,80 @@ function Products() {
                             </div>
                         </div>
                         <div className="flex justify-between flex-wrap my-6 -mx-2.5">
-                            {filterProductList.map((product) => {
-                                return (
-                                    <div
-                                        key={product.id}
-                                        className="sm:px-2 md:px-2 lg:px-2 w-1/3"
-                                    >
-                                        <div className="px-2.5 shadow-sm shadow-gray-200 group">
-                                            <div className="relative">
-                                                <img
-                                                    className="w-full"
-                                                    src={product.image}
-                                                    alt={product.title}
-                                                />
-                                                <div className="flex justify-between absolute bottom-0 w-full p-1.5 bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
-                                                    <span className="text-2xs cursor-pointer hover:opacity-70">
-                                                        Add to cart
-                                                        <FontAwesomeIcon
-                                                            className="text-xs leading-[3rem] pl-1 cursor-pointer hover:opacity-70"
-                                                            icon="fa-solid fa-cart-plus"
-                                                        />
-                                                    </span>
-                                                    <FontAwesomeIcon
-                                                        className="text-xs leading-[3rem] pl-2 cursor-pointer hover:opacity-70"
-                                                        icon="fa-solid fa-eye"
+                            {loading ? (
+                                <ProductlistLoading />
+                            ) : (
+                                filterProductList.map((product) => {
+                                    return (
+                                        <div
+                                            key={product.id}
+                                            className="sm:px-2 md:px-2 lg:px-2 mb-2 w-1/3"
+                                        >
+                                            <div className="px-2.5 shadow-sm shadow-gray-200 group">
+                                                <div className="relative">
+                                                    <img
+                                                        className="w-full"
+                                                        src={product.image}
+                                                        alt={product.title}
                                                     />
-                                                </div>
-                                            </div>
-                                            <div className="my-2">
-                                                <p className="text-xs font-light truncate">
-                                                    {product.title}
-                                                </p>
-                                                <div className="pb-2 ">
-                                                    <span className="text-xs font-medium">
-                                                        {new Intl.NumberFormat(
-                                                            'vi-VN',
-                                                            {
-                                                                style: 'currency',
-                                                                currency: 'VND',
-                                                            },
-                                                        ).format(
-                                                            product.originalPrice,
-                                                        )}
-                                                    </span>
-                                                    {product.promotionPercent ===
-                                                    0 ? null : (
-                                                        <span className="text-3xs mx-2 bg-yellow-200">
-                                                            -
-                                                            {
-                                                                product.promotionPercent
-                                                            }
-                                                            %
+                                                    <div className="flex justify-between absolute bottom-0 w-full p-1.5 bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
+                                                        <span className="text-2xs cursor-pointer hover:opacity-70">
+                                                            Add to cart
+                                                            <FontAwesomeIcon
+                                                                className="text-xs leading-[3rem] pl-1 cursor-pointer hover:opacity-70"
+                                                                icon="fa-solid fa-cart-plus"
+                                                            />
                                                         </span>
-                                                    )}
+                                                        <FontAwesomeIcon
+                                                            className="text-xs leading-[3rem] pl-2 cursor-pointer hover:opacity-70"
+                                                            icon="fa-solid fa-eye"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="my-2">
+                                                    <p className="text-xs font-light truncate">
+                                                        {product.title}
+                                                    </p>
+                                                    <div className="pb-2 ">
+                                                        <span className="text-xs font-medium">
+                                                            {new Intl.NumberFormat(
+                                                                'vi-VN',
+                                                                {
+                                                                    style: 'currency',
+                                                                    currency:
+                                                                        'VND',
+                                                                },
+                                                            ).format(
+                                                                product.originalPrice,
+                                                            )}
+                                                        </span>
+                                                        {product.promotionPercent ===
+                                                        0 ? null : (
+                                                            <span className="text-3xs mx-2 bg-yellow-200">
+                                                                -
+                                                                {
+                                                                    product.promotionPercent
+                                                                }
+                                                                %
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })
+                            )}
                         </div>
                         <div className="flex justify-center">
-                            <Pagination count={5} onChange={handleChangePage} />
+                            {filterProductList.length ? (
+                                <Pagination
+                                    count={5}
+                                    onChange={handleChangePage}
+                                />
+                            ) : (
+                                <p>Sorry ! Không tìm được sản phẩm phù hợp</p>
+                            )}
                         </div>
                     </div>
                 </div>

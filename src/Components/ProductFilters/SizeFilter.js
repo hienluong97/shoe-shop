@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function SizeFilter({ onChange }) {
+function SizeFilter({ filters, onChange }) {
     const sizesList = [36, 37, 38, 39];
     const [sizes, setSizes] = useState([]);
 
@@ -17,6 +17,11 @@ function SizeFilter({ onChange }) {
     useEffect(() => {
         onChange(sizes);
     }, [sizes]);
+
+    useEffect(() => {
+        setSizes([]);
+    }, [filters.active]);
+
     return (
         <div>
             <h6 className="text-xs font-medium mt-3">Kích cỡ sản phẩm</h6>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ColorFilter({ onChange }) {
+function ColorFilter({ filters, onChange }) {
     const colorsList = ['trang', 'den', 'do', 'hong', 'vang'];
     const [colors, setColors] = useState([]);
 
@@ -17,6 +17,10 @@ function ColorFilter({ onChange }) {
     useEffect(() => {
         onChange(colors);
     }, [colors]);
+
+    useEffect(() => {
+        setColors([]);
+    }, [filters.active]);
 
     return (
         <div>
@@ -35,30 +39,6 @@ function ColorFilter({ onChange }) {
                         </label>
                     );
                 })}
-
-                {/* <label className="checkbox-container">
-                    Mau trang
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-
-                <label className="checkbox-container">
-                    Mau den
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-
-                <label className="checkbox-container">
-                    Mau do
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-
-                <label className="checkbox-container">
-                    Mau hong
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label> */}
             </div>
         </div>
     );

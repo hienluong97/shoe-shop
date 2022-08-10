@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
-import ProductlistLoading from '~/Components/ProductlistLoading';
+import ProductSlideLoading from '~/Components/ProductSlideLoading';
 import productsApi from '~/API/ProductsApi';
 import Slider from 'react-slick';
 
@@ -63,7 +63,7 @@ function Trending() {
             </div>
             <div className=" sm:-mx-2 md:-mx-2 lg:-mx-2">
                 {loading ? (
-                    <ProductlistLoading />
+                    <ProductSlideLoading />
                 ) : (
                     <Slider {...sliderSettings}>
                         {saleProduct.map((product) => {

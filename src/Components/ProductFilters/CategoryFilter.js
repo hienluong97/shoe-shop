@@ -1,18 +1,22 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 import categoryApi from '../../API/CategoryApi';
 
-function CategoryFilter({ onChange }) {
+function CategoryFilter({ filters, onChange }) {
     const [categories, setCategories] = useState([]);
     const [categoryIds, setCategoryIds] = useState([]);
-    // console.log(categoryIds);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await categoryApi.getAll();
+                setCategories(response);
+            } catch {
+                console.log('error');
+            }
+        })();
+    }, []);
+
     const hanldeChangeCategory = (id) => {
-        // setCategoryIds((prev) => {
-        //     if (categoryIds.includes(id)) {
-        //         return prev.filter((x) => x !== id);
-        //     } else {
-        //         return [...prev, id];
-        //     }
-        // });
         setCategoryIds((prev) => {
             if (categoryIds.includes(id)) {
                 return prev.filter((x) => x !== id);
@@ -26,18 +30,9 @@ function CategoryFilter({ onChange }) {
         onChange(categoryIds);
     }, [categoryIds]);
 
-    console.log('render');
-
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await categoryApi.getAll();
-                setCategories(response);
-            } catch {
-                console.log('error');
-            }
-        })();
-    }, []);
+        setCategoryIds([]);
+    }, [filters.active]);
 
     return (
         <div>
@@ -59,4 +54,4 @@ function CategoryFilter({ onChange }) {
     );
 }
 
-export default memo(CategoryFilter);
+export default CategoryFilter;
