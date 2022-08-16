@@ -17,6 +17,9 @@ module.exports = {
             minWidth: {
                 8: '100',
             },
+            height: {
+                15: '3.5rem',
+            },
         },
     },
     plugins: [require('tailwindcss-textshadow')],

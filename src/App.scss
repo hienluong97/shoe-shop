@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-
 :root {
   font-family: 'Roboto', sans-serif;
 }
@@ -32,9 +31,9 @@ body {
   position:absolute;  
   height: 0;
   width: 0;
-  border-top: 18px solid transparent;
-  border-bottom: 18px solid transparent;
-  border-left: 30px solid rgb(252, 211, 77);
+  border-top: 0.75rem solid transparent;
+  border-bottom: 0.75rem solid transparent;
+  border-left: 1.5rem solid rgb(252, 211, 77);
 }
 
 .slick-next:before,

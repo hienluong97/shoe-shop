@@ -24,17 +24,17 @@ function SizeFilter({ filters, onChange }) {
 
     return (
         <div>
-            <h6 className="text-xs font-medium mt-3">Kích cỡ sản phẩm</h6>
+            <h6 className="text-sm font-medium mt-3">Kích cỡ sản phẩm</h6>
             {sizesList.map((size) => {
                 return (
                     <label key={size} className="checkbox-container">
-                        {size}
                         <input
                             type="checkbox"
                             onChange={() => hanldeChangeSize(size)}
                             checked={sizes.includes(size)}
                         />
                         <span className="checkmark"></span>
+                        {size}
                     </label>
                 );
             })}

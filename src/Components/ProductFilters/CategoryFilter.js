@@ -36,17 +36,17 @@ function CategoryFilter({ filters, onChange }) {
 
     return (
         <div>
-            <h6 className="text-xs font-medium">Danh mục sản phẩm</h6>
+            <h6 className="text-sm font-medium">Danh mục sản phẩm</h6>
             {categories.map((category) => {
                 return (
                     <label key={category.id} className="checkbox-container">
-                        {category.name}
                         <input
                             type="checkbox"
                             onChange={() => hanldeChangeCategory(category.id)}
                             checked={categoryIds.includes(category.id)}
                         />
                         <span className="checkmark"></span>
+                        {category.name}
                     </label>
                 );
             })}

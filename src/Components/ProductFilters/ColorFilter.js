@@ -24,18 +24,18 @@ function ColorFilter({ filters, onChange }) {
 
     return (
         <div>
-            <h6 className="text-xs font-medium mt-3">Màu sắc</h6>
+            <h6 className="text-sm font-medium mt-3">Màu sắc</h6>
             <div>
                 {colorsList.map((color) => {
                     return (
                         <label key={color} className="checkbox-container">
-                            {`Mau ${color}`}
                             <input
                                 type="checkbox"
                                 onChange={() => hanldeChangeColor(color)}
                                 checked={colors.includes(color)}
                             />
                             <span className="checkmark"></span>
+                            {`Mau ${color}`}
                         </label>
                     );
                 })}

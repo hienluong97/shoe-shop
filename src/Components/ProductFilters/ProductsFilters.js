@@ -46,10 +46,10 @@ function ProductsFilters({ filters, onChange }) {
             <SizeFilter onChange={HandleSizeChange} filters={filters} />
             <ColorFilter onChange={HandleColorChange} filters={filters} />
             <div
-                className="text-xs mt-5 px-4 py-1.5 inline-block border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black"
+                className="text-xs font-medium mt-5 px-4 py-1.5 inline-block border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black"
                 onClick={handleRemoveFilters}
             >
-                Bỏ áp dụng
+                Xoá bộ lọc
             </div>
         </div>
     );

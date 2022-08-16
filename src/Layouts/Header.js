@@ -1,56 +1,64 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header() {
     return (
-        <div className="w-full h-12 bg-white shadow-sm shadow-gray-200 fixed top-0 z-10">
+        <div className="w-full h-15 bg-white shadow-sm shadow-gray-200 fixed top-0 z-50">
             <div className="container  px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
                 <div className="flex">
                     <div className="flex-none">
-                        <p className="leading-[3rem] text-2xl text-amber-300 font-bold text-shadow-xl shadow-yellow-300 ">
+                        <p className="leading-[3.5rem] text-3xl text-amber-300 font-bold text-shadow-xl shadow-yellow-300 ">
                             MStore
                         </p>
                     </div>
                     <div className="flex-1 text-center">
                         <NavLink
-                            className=" leading-[3rem] text-xs font-light m-2"
+                            className=" leading-[3.5rem] text-xs font-light m-2"
                             to="/"
                         >
-                            Home
+                            Trang chủ
                         </NavLink>
                         <NavLink
-                            className="leading-[3rem] text-xs font-light m-2"
+                            className="leading-[3.5rem] text-xs font-light m-2"
                             to="/products"
                         >
-                            Product
+                            Sản phẩm
                         </NavLink>
                         <NavLink
-                            className="leading-[3rem] text-xs font-light m-2"
+                            className="leading-[3.5rem] text-xs font-light m-2"
                             to="/about"
                         >
-                            About
+                            Về chúng tôi
                         </NavLink>
                     </div>
                     <div className="flex-none">
-                        <span className="text-xs leading-[3rem] m-2">
+                        <span className="text-xs leading-[3.5rem] m-2">
                             <FontAwesomeIcon
-                                className="text-xs leading-[3rem]"
+                                className="text-xs leading-[3.5rem]"
                                 icon="fa-solid fa-magnifying-glass"
                             />
                             <input
                                 type="text"
-                                placeholder="Search"
-                                className="text-xs py-1 pl-1 font-light placeholder:pl-1 placeholder:text-3xs outline-none"
+                                placeholder="Tìm kiếm"
+                                className="text-xs py-1 pl-1 font-light placeholder:pl-1 placeholder:text-2xs outline-none"
                             />
                         </span>
-                        <span className="text-xs font-light leading-[3rem] m-2 hover:cursor-pointer">
-                            Log in
+                        <span className="text-xs font-light leading-[3.5rem] m-2 hover:cursor-pointer">
+                            Đăng nhập
                         </span>
-                        <FontAwesomeIcon
-                            className="text-xs leading-[3rem]"
-                            icon="fa-solid fa-cart-plus"
-                        />
+                        <Link to="/cart">
+                            <span className="relative">
+                                <FontAwesomeIcon
+                                    className="text-xs leading-[3.5rem]"
+                                    icon="fa-solid fa-cart-plus"
+                                />
+                                <p className="absolute px-1 text-3xs font-medium text-white bg-red-600 -top-1 -right-1.5 rounded-full">
+                                    {' '}
+                                    0{' '}
+                                </p>
+                            </span>
+                        </Link>
                     </div>
                 </div>
             </div>
