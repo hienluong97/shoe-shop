@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../Components/Features/cartSlice';
+import { addToCart } from '../Components/Features/cartSlice';
 
 function ProductThumbnail({ product }) {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function ProductThumbnail({ product }) {
                 <div className="text-xs flex justify-between absolute bottom-0 w-full p-1.5 bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
                     <p
                         className="text-2xs cursor-pointer hover:opacity-70"
-                        onClick={() => dispatch(addItem(product))}
+                        onClick={() => dispatch(addToCart(product))}
                     >
                         Thêm vào giỏ hàng
                         <FontAwesomeIcon

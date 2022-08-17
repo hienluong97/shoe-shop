@@ -1,8 +1,13 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
 
 function Header() {
+    const cartProducts = useSelector((state) => state.cart);
+    const totalItems = cartProducts.reduce((total, product) => {
+        return total + product.quantity;
+    }, 0);
     return (
         <div className="w-full h-15 bg-white shadow-sm shadow-gray-200 fixed top-0 z-50">
             <div className="container  px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
@@ -54,8 +59,7 @@ function Header() {
                                     icon="fa-solid fa-cart-plus"
                                 />
                                 <p className="absolute px-1 text-3xs font-medium text-white bg-red-600 -top-1 -right-1.5 rounded-full">
-                                    {' '}
-                                    0{' '}
+                                    {totalItems}
                                 </p>
                             </span>
                         </Link>
