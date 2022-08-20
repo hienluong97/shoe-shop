@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
 import productsApi from '~/API/ProductsApi';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
 import ProductDetailLoading from '../Components/ProductDetailLoading';
 import ProductQuantity from './ProductQuantity';
-import { incrementByAmount } from '../Components/Features/cartSlice';
+import { incrementByAmount } from '../Components/Features/Cart/cartSlice';
+import { useSnackbar } from 'notistack';
 
 function ProductDetail(props) {
     const { id } = useParams();
@@ -13,6 +14,7 @@ function ProductDetail(props) {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         (async () => {
@@ -38,6 +40,12 @@ function ProductDetail(props) {
     };
     const handleSubmit = (product, quantity) => {
         dispatch(incrementByAmount({ product, quantity }));
+        successNoti('success');
+    };
+    const successNoti = (variant) => {
+        enqueueSnackbar('Thêm thành công sản phẩm!', {
+            variant: 'success',
+        });
     };
 
     return (

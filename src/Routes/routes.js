@@ -2,8 +2,10 @@ import Home from '../Pages/Home';
 import Products from '../Pages/Products';
 import ProductDetail from '../Components/ProductDetail';
 import About from '../Pages/About';
-import Cart from '../Components/Features/Cart';
+import Cart from '../Components/Features/Cart/Cart';
 import CheckOut from '../Components/CheckOut';
+import LoginForm from '../Components/Features/Form/Login/LoginForm';
+import RegisterForm from '../Components/Features/Form/Register/RegisterForm';
 
 const publicRoutes = [
     {
@@ -15,6 +17,8 @@ const publicRoutes = [
     { path: '/about', component: About },
     { path: '/cart', component: Cart },
     { path: '/checkout', component: CheckOut },
+    { path: '/login', component: LoginForm },
+    { path: '/register', component: RegisterForm },
 ];
 
 export { publicRoutes };

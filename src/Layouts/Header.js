@@ -49,9 +49,12 @@ function Header() {
                                 className="text-xs py-1 pl-1 font-light placeholder:pl-1 placeholder:text-2xs outline-none"
                             />
                         </span>
-                        <span className="text-xs font-light leading-[3.5rem] m-2 hover:cursor-pointer">
+                        <Link
+                            to="/login"
+                            className="text-xs font-light leading-[3.5rem] m-2 hover:cursor-pointer"
+                        >
                             Đăng nhập
-                        </span>
+                        </Link>
                         <Link to="/cart">
                             <span className="relative">
                                 <FontAwesomeIcon

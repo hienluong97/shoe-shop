@@ -2,10 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../Components/Features/cartSlice';
+import { addToCart } from './Features/Cart/cartSlice';
+import { useSnackbar } from 'notistack';
 
 function ProductThumbnail({ product }) {
     const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+    const handleAddItem = (product) => {
+        dispatch(addToCart(product));
+        successNoti('success');
+    };
+
+    const successNoti = (variant) => {
+        enqueueSnackbar('Thêm thành công sản phẩm!', {
+            variant: 'success',
+        });
+    };
     return (
         <div className="px-2.5 shadow-sm shadow-gray-200 group">
             <div className="relative">
@@ -17,7 +29,7 @@ function ProductThumbnail({ product }) {
                 <div className="text-xs flex justify-between absolute bottom-0 w-full p-1.5 bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
                     <p
                         className="text-2xs cursor-pointer hover:opacity-70"
-                        onClick={() => dispatch(addToCart(product))}
+                        onClick={() => handleAddItem(product)}
                     >
                         Thêm vào giỏ hàng
                         <FontAwesomeIcon

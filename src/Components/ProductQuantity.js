@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ProductQuantity({ quantity, onChange, onDecre, onIncre }) {
@@ -26,7 +26,6 @@ function ProductQuantity({ quantity, onChange, onDecre, onIncre }) {
                         className="w-full outline-none text-center"
                         type="text"
                         value={quantity}
-                        disabled
                         onChange={(e) => onChange(Number(e.target.value))}
                     />
                 </div>
