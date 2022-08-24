@@ -7,11 +7,13 @@ import PasswordField from '../FormFields/PasswordField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 function LoginForm(props) {
     const schema = yup
         .object({
-            name: yup.string().required('* Vui lòng điền vào trường này'),
             username: yup.string().required('* Vui lòng điền vào trường này'),
             email: yup
                 .string()
@@ -29,7 +31,6 @@ function LoginForm(props) {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            name: '',
             username: '',
             email: '',
             password: '',
@@ -40,84 +41,16 @@ function LoginForm(props) {
 
     const onSubmit = (data) => console.log(data);
 
-    // (function () {
-    //     console.log('Start file login with firebase');
-    // Initialize Firebase
-    // var config = {
-    //     apiKey: 'xxxxx',
-    //     authDomain: 'e-commerce-63c3e.firebaseapp.com',
-    //     databaseURL: 'xxxx.firebaseio.com',
-    //     projectId: 'e-commerce-63c3e',
-    //     storageBucket: 'e-commerce-63c3e.appspot.com',
-    //     messagingSenderId: '87733138523',
-    // };
-    // firebase.initializeApp(config);
-    // var database = firebase.database();
-
-    //Google singin provider
-    // var ggProvider = new firebase.auth.GoogleAuthProvider();
-    //Facebook singin provider
-    //  var fbProvider = new firebase.auth.FacebookAuthProvider();
-    //Login in variables
-    // const btnGoogle = document.getElementById('btnGoogle');
-    //  const btnFaceBook = document.getElementById('btnFacebook');
-
-    //Sing in with Google
-    // btnGoogle.addEventListener(
-    //     'click',
-    //     (e) => {
-    //         firebase
-    //             .auth()
-    //             .signInWithPopup(ggProvider)
-    //             .then(function (result) {
-    //                 var token = result.credential.accessToken;
-    //                 var user = result.user;
-    //                 console.log('User>>Goole>>>>', user);
-    //                 userId = user.uid;
-    //             })
-    //             .catch(function (error) {
-    //                 console.error('Error: hande error here>>>', error.code);
-    //             });
-    //     },
-    //     false,
-    // );
-
-    //Sing in with Facebook
-    // btnFaceBook.addEventListener(
-    //     'click',
-    //     (e) => {
-    //         firebase
-    //             .auth()
-    //             .signInWithPopup(fbProvider)
-    //             .then(function (result) {
-    //                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    //                 var token = result.credential.accessToken;
-    //                 // The signed-in user info.
-    //                 var user = result.user;
-    //                 console.log('User>>Facebook>', user);
-    //                 // ...
-    //                 userId = user.uid;
-    //             })
-    //             .catch(function (error) {
-    //                 // Handle Errors here.
-    //                 var errorCode = error.code;
-    //                 var errorMessage = error.message;
-    //                 // The email of the user's account used.
-    //                 var email = error.email;
-    //                 // The firebase.auth.AuthCredential type that was used.
-    //                 var credential = error.credential;
-    //                 // ...
-    //                 console.error(
-    //                     'Error: hande error here>Facebook>>',
-    //                     error.code,
-    //                 );
-    //             });
-    //     },
-    //     false,
-    // );
-    //jquery
-    // })();
-
+    const uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'redirect',
+        // We will display Google and Facebook as auth providers.
+        signInSuccessUrl: './',
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        ],
+    };
     return (
         <div className="mt-14 w-full ">
             <div className="container flex items-center justify-center px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
@@ -127,18 +60,21 @@ function LoginForm(props) {
                             <FontAwesomeIcon icon="fa-solid fa-user" />
                         </h2>
                     </div>
-                    <form className="mt-8 space-y-4">
+                    <form
+                        className="mt-8 space-y-4"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
                         <div className="shadow-sm">
                             <TextField
                                 control={control}
                                 name="username"
                                 error={errors.username}
                             />
-                            <EmailField
+                            {/* <EmailField
                                 control={control}
                                 name="email"
                                 error={errors.email}
-                            />
+                            /> */}
                             <PasswordField
                                 control={control}
                                 name="password"
@@ -193,16 +129,12 @@ function LoginForm(props) {
                             </div>
                         </div>
                         <hr />
-                        <div className="flex items-center justify-between">
+                        <div className="flex justify-center">
                             <div className="text-sm">
-                                Hoặc đăng nhập với tài khoản
-                                <button
-                                    to="#"
-                                    id="btnGoogle"
-                                    className="font-normal ml-1 text-indigo-600 hover:text-indigo-500"
-                                >
-                                    Google
-                                </button>
+                                <StyledFirebaseAuth
+                                    uiConfig={uiConfig}
+                                    firebaseAuth={firebase.auth()}
+                                />
                             </div>
                         </div>
                     </form>

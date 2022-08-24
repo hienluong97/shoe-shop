@@ -15,10 +15,10 @@ root.render(
             <SnackbarProvider
                 maxSnack={3}
                 anchorOrigin={{
-                    vertical: 'top',
+                    vertical: 'bottom',
                     horizontal: 'right',
                 }}
-                autoHideDuration={800}
+                autoHideDuration={1000}
             >
                 <App />
             </SnackbarProvider>

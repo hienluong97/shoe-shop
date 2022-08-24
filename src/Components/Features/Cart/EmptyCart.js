@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function EmptyCart(props) {
+function EmptyCart() {
     return (
         <div className=" flex flex-col text-center items-center">
             <div>

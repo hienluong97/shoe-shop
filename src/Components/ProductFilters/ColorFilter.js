@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function ColorFilter({ filters, onChange }) {
-    const colorsList = ['trang', 'den', 'do', 'hong', 'vang'];
+    const colorsList = ['trắng', 'đen', 'đỏ', 'hồng', 'vàng'];
     const [colors, setColors] = useState([]);
 
     const hanldeChangeColor = (color) => {
