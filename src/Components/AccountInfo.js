@@ -15,16 +15,16 @@ function AccountInfo() {
         <div className="">
             <ul className="">
                 <li className="text-xs py-2 px-4 hover:border-l-2 hover:border-amber-300 hover:cursor-pointer hover:font-normal hover:border-l-1 shadow-sm">
-                    <a href="#">My account</a>
+                    <a href="#">Tài khoản</a>
                 </li>
                 <li className="text-xs py-2 px-4 hover:border-l-2 hover:border-amber-300 hover:cursor-pointer hover:font-normal shadow-sm">
-                    <a href="#">My order</a>
+                    <a href="#">Bộ sưu tập</a>
                 </li>
                 <li
                     className="text-xs py-2 px-4 hover:border-l-2 hover:border-amber-300 hover:cursor-pointer hover:font-normal shadow-sm"
                     onClick={handleClickLogoutBtn}
                 >
-                    <span> Logout</span>
+                    <span>Đăng xuất</span>
                 </li>
             </ul>
         </div>

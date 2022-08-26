@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function ColorFilter({ filters, onChange }) {
-    const colorsList = ['trắng', 'đen', 'đỏ', 'hồng', 'vàng'];
+    const colorsList = ['trắng', 'đen', 'đỏ', 'hồng', 'vàng', 'xanh'];
     const [colors, setColors] = useState([]);
 
     const hanldeChangeColor = (color) => {
@@ -35,7 +35,7 @@ function ColorFilter({ filters, onChange }) {
                                 checked={colors.includes(color)}
                             />
                             <span className="checkmark"></span>
-                            {`Mau ${color}`}
+                            {`Màu ${color}`}
                         </label>
                     );
                 })}

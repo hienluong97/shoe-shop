@@ -8,48 +8,26 @@ import {
     decrementAnItem,
     addToCart,
 } from './cartSlice';
-import { useSnackbar } from 'notistack';
 import EmptyCart from './EmptyCart.js';
 
 function Cart() {
     const cartProducts = useSelector((state) => state.cart);
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
 
     const handleRemoveItem = (id) => {
         dispatch(removeItem(id));
-        warningNoti('warning');
     };
 
     const handleSubmit = (product, quantity) => {
         dispatch(updateQuantity({ product, quantity }));
-        successNoti('success');
     };
 
     const handleDecrementItem = (product) => {
         dispatch(decrementAnItem(product));
-        infoNoti('info');
     };
 
     const handleAddtoCart = (product) => {
         dispatch(addToCart(product));
-        successNoti('success');
-    };
-
-    const successNoti = (variant) => {
-        enqueueSnackbar('Thêm thành công sản phẩm!', {
-            variant: 'success',
-        });
-    };
-    const warningNoti = (variant) => {
-        enqueueSnackbar('Bạn đã xoá sản phẩm!', {
-            variant: 'warning',
-        });
-    };
-    const infoNoti = (variant) => {
-        enqueueSnackbar('Bạn vừa giảm đi một sản phẩm!', {
-            variant: 'info',
-        });
     };
 
     const totalItems = cartProducts.reduce((total, product) => {
@@ -60,24 +38,30 @@ function Cart() {
     }, 0);
 
     return (
-        <div className="my-16">
-            <div className="container  px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
+        <div className="my-20">
+            <div className="container px-4 lg:px-14 mx-auto">
                 {totalItems === 0 ? (
                     <EmptyCart />
                 ) : (
-                    <div className="mt-6 flex justify-between">
-                        <div className="w-3/4 mr-6 flex flex-col">
+                    <div className="mt-6 flex flex-col lg:flex-row justify-center lg:justify-between">
+                        <div className="w-full lg:w-3/4 mr-6 flex flex-col">
                             <div className="flex items-center text-sm font-medium ">
-                                <div className="flex w-1/3 items-center ">
+                                <div className="flex w-full md:w-1/3 items-center ">
                                     Sản phẩm
                                 </div>
-                                <div className="w-2/3 flex items-center">
-                                    <div className="w-1/4  pl-6 text-sm">
-                                        Đơn giá
+                                <div className="w-2/3 hidden md:flex justify-between items-center">
+                                    <div className="w-4/5 flex flex-col md:flex-row ">
+                                        <div className="w-full md:w-1/3 mb-1 pl-4">
+                                            Đơn giá
+                                        </div>
+                                        <div className="w-full md:w-1/3 mb-1 pl-4">
+                                            Số lượng
+                                        </div>
+                                        <div className="w-full md:w-1/3 mb-1 pl-4">
+                                            Thành tiền
+                                        </div>
                                     </div>
-                                    <div className="w-1/4 pl-6">Số lượng</div>
-                                    <div className="w-1/4 pl-6">Thành tiền</div>
-                                    <div className="w-1/4 pl-6"></div>
+                                    <div className="w-1/5"></div>
                                 </div>
                             </div>
 
@@ -86,110 +70,113 @@ function Cart() {
                                 return (
                                     <div
                                         key={product.id}
-                                        className="mt-4 flex items-center text-xs font-light"
+                                        className="mb-3 flex items-center text-xs font-light bg-slate-50"
                                     >
-                                        <div className="flex w-1/3 items-center ">
+                                        <div className="flex flex-col md:flex-row w-1/3 items-center ">
                                             <div>
                                                 <img
                                                     src={product.image}
-                                                    width={160}
-                                                    height={160}
+                                                    width={100}
+                                                    height={100}
                                                 />
                                             </div>
-                                            <div className="pl-6">
+                                            <div className="md:pl-4 w-full truncate">
                                                 <Link
                                                     to={`/products/${product.id}`}
                                                 >
-                                                    {' '}
                                                     {product.title}
                                                 </Link>
                                             </div>
                                         </div>
-                                        <div className="w-2/3 flex items-center">
-                                            <div className="w-1/4  pl-6 ">
-                                                {new Intl.NumberFormat(
-                                                    'vi-VN',
-                                                    {
-                                                        style: 'currency',
-                                                        currency: 'VND',
-                                                    },
-                                                ).format(product.salePrice)}
-                                            </div>
-                                            <div className="w-1/4 pl-6 flex items-center">
-                                                <div className="flex items-center border border-spacing-2 border-black ">
-                                                    <div
-                                                        className="w-1/3 text-center border-r border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
-                                                        onClick={() => {
-                                                            if (
-                                                                quantity === 1
-                                                            ) {
-                                                                alert(
-                                                                    'Ít nhất một sản phẩm',
-                                                                );
-                                                                return;
-                                                            } else {
-                                                                handleDecrementItem(
-                                                                    product,
-                                                                );
-                                                            }
-                                                        }}
-                                                    >
-                                                        <FontAwesomeIcon
-                                                            icon="fa-solid fa-minus "
-                                                            className="p-1.5  text-2xs "
-                                                        />
-                                                    </div>
-
-                                                    <div className="w-1/3 text-center">
-                                                        <input
-                                                            className="w-full outline-none text-center"
-                                                            type="text"
-                                                            value={
-                                                                product.quantity
-                                                            }
-                                                            onChange={(e) => {
-                                                                const quantity =
-                                                                    Number(
-                                                                        e.target
-                                                                            .value,
+                                        <div className="w-2/3 flex justify-between items-center">
+                                            <div className="w-4/5 flex flex-col md:flex-row  ">
+                                                <div className="w-full md:w-1/3 mb-1 md:mb-0 pl-4 ">
+                                                    {new Intl.NumberFormat(
+                                                        'vi-VN',
+                                                        {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        },
+                                                    ).format(product.salePrice)}
+                                                </div>
+                                                <div className="w-full md:w-1/3 mb-1 md:mb-0 pl-4">
+                                                    <div className="w-18 flex items-center border border-spacing-2 border-black ">
+                                                        <div
+                                                            className="w-1/3 flex justify-center text-center border-r border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
+                                                            onClick={() => {
+                                                                if (
+                                                                    quantity ===
+                                                                    1
+                                                                ) {
+                                                                    alert(
+                                                                        'Ít nhất một sản phẩm',
                                                                     );
-                                                                handleSubmit(
-                                                                    product,
-                                                                    quantity,
-                                                                );
+                                                                    return;
+                                                                } else {
+                                                                    handleDecrementItem(
+                                                                        product,
+                                                                    );
+                                                                }
                                                             }}
-                                                        />
-                                                    </div>
-                                                    <div
-                                                        className="w-1/3 text-center border-l border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
-                                                        onClick={() =>
-                                                            handleAddtoCart(
-                                                                product,
-                                                            )
-                                                        }
-                                                    >
-                                                        <FontAwesomeIcon
-                                                            icon="fa-solid fa-plus "
-                                                            className="p-1.5  text-2xs"
-                                                        />
+                                                        >
+                                                            <FontAwesomeIcon
+                                                                icon="fa-solid fa-minus "
+                                                                className="block p-1  text-2xs "
+                                                            />
+                                                        </div>
+
+                                                        <div className="w-1/3 text-center">
+                                                            <input
+                                                                className="w-full outline-none text-center"
+                                                                type="text"
+                                                                value={
+                                                                    product.quantity
+                                                                }
+                                                                onChange={(
+                                                                    e,
+                                                                ) => {
+                                                                    const quantity =
+                                                                        Number(
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        );
+                                                                    handleSubmit(
+                                                                        product,
+                                                                        quantity,
+                                                                    );
+                                                                }}
+                                                            />
+                                                        </div>
+                                                        <div
+                                                            className="w-1/3 flex justify-center text-center border-l border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
+                                                            onClick={() =>
+                                                                handleAddtoCart(
+                                                                    product,
+                                                                )
+                                                            }
+                                                        >
+                                                            <FontAwesomeIcon
+                                                                icon="fa-solid fa-plus "
+                                                                className="block p-1  text-2xs"
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div className="w-full md:w-1/3 mb-1 md:mb-0 pl-4 ">
+                                                    {new Intl.NumberFormat(
+                                                        'vi-VN',
+                                                        {
+                                                            style: 'currency',
+                                                            currency: 'VND',
+                                                        },
+                                                    ).format(
+                                                        product.salePrice *
+                                                            product.quantity,
+                                                    )}
+                                                </div>
                                             </div>
-                                            <div className="w-1/4 pl-6 ">
-                                                {' '}
-                                                {new Intl.NumberFormat(
-                                                    'vi-VN',
-                                                    {
-                                                        style: 'currency',
-                                                        currency: 'VND',
-                                                    },
-                                                ).format(
-                                                    product.salePrice *
-                                                        product.quantity,
-                                                )}
-                                            </div>
-                                            <div className="w-1/4 pl-6">
-                                                {' '}
+                                            <div className="w-1/5 text-right lg:text-left">
                                                 <FontAwesomeIcon
                                                     icon="fa-solid fa-trash-can "
                                                     className="p-2.5 text-2xs hover:opacity-70 hover:cursor-pointer"
@@ -205,13 +192,13 @@ function Cart() {
                                 );
                             })}
                         </div>
-                        <div className="w-1/4 p-3 shadow-md">
-                            <div className="flex justify-between text-sm font-medium">
-                                <div>Tổng sản phẩm</div>
+                        <div className="w-full lg:w-1/4 p-3 shadow-md">
+                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-sm font-nomal">
+                                <div className="lg:w-full">Tổng sản phẩm</div>
                                 <div>{totalItems}</div>
                             </div>
-                            <div className="flex justify-between text-sm font-medium">
-                                <div>Thành tiền</div>
+                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-sm font-nomal">
+                                <div className="lg:w-full">Thành tiền</div>
                                 <div>
                                     {new Intl.NumberFormat('vi-VN', {
                                         style: 'currency',
@@ -222,13 +209,13 @@ function Cart() {
                             <div className="mt-5 flex flex-col">
                                 <Link
                                     to="/checkout"
-                                    className="text-xs font-normal text-center  py-1.5  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                    className="text-xs font-normal text-center  py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                 >
                                     Đặt hàng
                                 </Link>
                                 <Link
                                     to="/products"
-                                    className="mt-3 text-xs font-normal text-center py-1.5  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                    className="mt-3 text-xs font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                 >
                                     Tiếp tục mua sắm
                                 </Link>

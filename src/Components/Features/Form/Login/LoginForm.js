@@ -53,12 +53,10 @@ function LoginForm(props) {
     };
     return (
         <div className="mt-14 w-full ">
-            <div className="container flex items-center justify-center px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
+            <div className="container px-4 lg:px-14 mx-auto flex items-center justify-center ">
                 <div className="max-w-xs w-full space-y-6 my-8 px-6 py-8 shadow-md shadow-gray-300">
-                    <div>
-                        <h2 className="text-center text-xl font-medium">
-                            <FontAwesomeIcon icon="fa-solid fa-user" />
-                        </h2>
+                    <div className="text-center text-xl font-medium">
+                        <FontAwesomeIcon icon="fa-solid fa-user" />
                     </div>
                     <form
                         className="mt-8 space-y-4"

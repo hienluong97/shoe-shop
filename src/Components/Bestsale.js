@@ -52,7 +52,7 @@ function Bestsale() {
     });
 
     return (
-        <div className="container px-1 sm:px-2 md:px-4 lg:px-14 mx-auto mt-12">
+        <div className="mt-12">
             <div className="flex justify-between items-baseline">
                 <p className="relative text-base font-semibold pl-2 mb-4 bg-amber-300 section-title">
                     Giảm giá sốc

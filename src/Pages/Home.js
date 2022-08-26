@@ -7,8 +7,10 @@ function Home() {
     return (
         <div className="my-14">
             {/* <Videobgr /> */}
-            <Bestsale />
-            <Trending />
+            <div className="container px-4 lg:px-14 mx-auto">
+                <Bestsale />
+                <Trending />
+            </div>
         </div>
     );
 }

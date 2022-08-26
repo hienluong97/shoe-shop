@@ -50,20 +50,21 @@ function ProductDetail(props) {
 
     return (
         <div className="my-14">
-            <div className="container  px-1 sm:px-2 md:px-4 lg:px-14 mx-auto">
+            <div className="container px-4 lg:px-14 mx-auto">
                 {loading ? (
                     <ProductDetailLoading />
                 ) : (
-                    <div className="flex justify-between items-center">
-                        <div className="w-1/2">
+                    <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
+                        <div className="w-full lg:w-1/2 flex justify-center">
                             <img
+                                className="block"
                                 src={product.image}
                                 alt={product.title}
                                 width={500}
                                 height={500}
                             />
                         </div>
-                        <div className="w-1/2">
+                        <div className="w-full lg:w-1/2">
                             <h3 className="text-md font-medium">
                                 {' '}
                                 {product.title}
@@ -88,7 +89,7 @@ function ProductDetail(props) {
                                 )}
                             </p>
                             <div className="mt-4 w-32 ">
-                                <div className="flex items-center border border-spacing-2 border-black">
+                                {/* <div className="flex items-center border border-spacing-2 border-black">
                                     <div
                                         className="border-r border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
                                         onClick={() => {
@@ -130,13 +131,13 @@ function ProductDetail(props) {
                                             className="p-2.5 text-xs"
                                         />
                                     </div>
-                                </div>
-                                {/* <ProductQuantity
+                                </div> */}
+                                <ProductQuantity
                                     quantity={quantity}
                                     onChange={handleChangeValue}
                                     onIncre={handleIncreValue}
                                     onDecre={handleDecreValue}
-                                /> */}
+                                />
                             </div>
                             <div className="mt-5 flex ">
                                 <div

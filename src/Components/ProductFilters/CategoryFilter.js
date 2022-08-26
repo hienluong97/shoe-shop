@@ -36,7 +36,7 @@ function CategoryFilter({ filters, onChange }) {
 
     return (
         <div>
-            <h6 className="text-sm font-medium">Danh mục sản phẩm</h6>
+            <h6 className="text-sm font-medium">Danh mục</h6>
             {categories.map((category) => {
                 return (
                     <label key={category.id} className="checkbox-container">
