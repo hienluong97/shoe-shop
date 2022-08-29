@@ -39,7 +39,7 @@ function Header() {
                         </NavLink>
                         <NavLink
                             className="leading-[3.5rem] text-xs font-light m-2"
-                            to="/about"
+                            to="/contact"
                         >
                             Liên hệ
                         </NavLink>
@@ -181,14 +181,14 @@ function Header() {
                                 </NavLink>
                                 <NavLink
                                     className="text-xs font-light m-2"
-                                    to="/about"
+                                    to="/contact"
                                 >
                                     Liên hệ
                                 </NavLink>
                                 {isLogin ? (
                                     <div
                                         to="/login"
-                                        className="inline text-xs font-light leading-[3.5rem] mt-2 group relative"
+                                        className="inline text-xs font-light mt-8 group relative"
                                     >
                                         <span className="font-medium">
                                             {current.name}

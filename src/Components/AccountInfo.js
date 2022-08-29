@@ -12,8 +12,8 @@ function AccountInfo() {
     };
 
     return (
-        <div className="">
-            <ul className="">
+        <div>
+            <ul>
                 <li className="text-xs py-2 px-4 hover:border-l-2 hover:border-amber-300 hover:cursor-pointer hover:font-normal hover:border-l-1 shadow-sm">
                     <a href="#">Tài khoản</a>
                 </li>

@@ -11,19 +11,21 @@ import * as yup from 'yup';
 function Register() {
     const schema = yup
         .object({
-            name: yup.string().required('* Vui lòng điền vào trường này'),
-            username: yup.string().required('* Vui lòng điền vào trường này'),
+            name: yup.string().required('* Vui lòng nhập tên của bạn'),
+            username: yup
+                .string()
+                .required('* Vui lòng nhập tên tài khoản của bạn'),
             email: yup
                 .string()
-                .required('* Vui lòng điền vào trường này')
+                .required('* Vui lòng nhập địa chỉ email')
                 .email('Vui lòng điền địa chỉ email hợp lệ'),
             password: yup
                 .string()
-                .required('* Vui lòng điền vào trường này')
+                .required('* Vui lòng nhập mật khẩu')
                 .min(8, 'Vui lòng nhập ít nhất 8 kí tự'),
             confirmPassword: yup
                 .string()
-                .required('* Vui lòng điền vào trường này')
+                .required('* Vui lòng nhập mật khẩu xác nhận')
                 .min(8, 'Vui lòng nhập ít nhất 8 kí tự')
                 .oneOf(
                     [yup.ref('password')],
@@ -52,7 +54,7 @@ function Register() {
     return (
         <div className="mt-14 w-full ">
             <div className="container px-4 lg:px-14 mx-auto flex items-center justify-center">
-                <div className="max-w-xs w-full space-y-8 my-8 px-6 py-8 shadow-md shadow-gray-300">
+                <div className="max-w-xs w-full space-y-8 my-8 md:px-6 py-8 md:shadow-md md:shadow-gray-300">
                     <div>
                         <h2 className="text-center text-xl font-medium">
                             Tạo tài khoản mới
@@ -62,7 +64,7 @@ function Register() {
                         className="mt-8 space-y-6"
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <div className="shadow-sm">
+                        <div>
                             <TextField
                                 control={control}
                                 name="name"

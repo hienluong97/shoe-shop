@@ -15,7 +15,11 @@ function Cart() {
     const dispatch = useDispatch();
 
     const handleRemoveItem = (id) => {
-        dispatch(removeItem(id));
+        if (window.confirm('Bạn muốn xoá sản phẩm')) {
+            dispatch(removeItem(id));
+        } else {
+            return;
+        }
     };
 
     const handleSubmit = (product, quantity) => {
@@ -33,7 +37,7 @@ function Cart() {
     const totalItems = cartProducts.reduce((total, product) => {
         return total + product.quantity;
     }, 0);
-    const totalPrice = cartProducts.reduce((total, product) => {
+    const subTotal = cartProducts.reduce((total, product) => {
         return total + product.quantity * product.salePrice;
     }, 0);
 
@@ -76,8 +80,8 @@ function Cart() {
                                             <div>
                                                 <img
                                                     src={product.image}
-                                                    width={100}
-                                                    height={100}
+                                                    width={140}
+                                                    height={140}
                                                 />
                                             </div>
                                             <div className="md:pl-4 w-full truncate">
@@ -203,7 +207,7 @@ function Cart() {
                                     {new Intl.NumberFormat('vi-VN', {
                                         style: 'currency',
                                         currency: 'VND',
-                                    }).format(totalPrice)}
+                                    }).format(subTotal)}
                                 </div>
                             </div>
                             <div className="mt-5 flex flex-col">

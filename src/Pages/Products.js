@@ -130,20 +130,22 @@ function Products() {
                     </div>
                     <div className="w-full lg:w-3/4">
                         <div className="flex  justify-center md:justify-end">
-                            <div className="flex">
-                                <p
-                                    className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black "
-                                    onClick={handleOrderChangeAsc}
-                                >
-                                    Giá tăng dần
-                                </p>
-                                <p
-                                    className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black"
-                                    onClick={handleOrderChangeDesc}
-                                >
-                                    Giá giảm dần
-                                </p>
-                            </div>
+                            {filterProductList.length ? (
+                                <div className="flex">
+                                    <p
+                                        className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black "
+                                        onClick={handleOrderChangeAsc}
+                                    >
+                                        Giá tăng dần
+                                    </p>
+                                    <p
+                                        className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black"
+                                        onClick={handleOrderChangeDesc}
+                                    >
+                                        Giá giảm dần
+                                    </p>
+                                </div>
+                            ) : null}
                         </div>
                         <div className="flex flex-wrap my-4 sm:-mx-2 md:-mx-2 lg:-mx-2.5">
                             {loading ? (
@@ -164,15 +166,18 @@ function Products() {
                             )}
                         </div>
                         <div className="flex justify-center">
+                            {loading === false && !filterProductList.length && (
+                                <p>Sorry ! Không tìm được sản phẩm phù hợp</p>
+                            )}
+                        </div>
+                        <div className="flex justify-center">
                             {filterProductList.length ? (
                                 <Pagination
                                     count={totalPage}
                                     page={page}
                                     onChange={handleChangePage}
                                 />
-                            ) : (
-                                <p>Sorry ! Không tìm được sản phẩm phù hợp</p>
-                            )}
+                            ) : null}
                         </div>
                     </div>
                 </div>

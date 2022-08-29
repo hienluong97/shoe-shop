@@ -14,15 +14,14 @@ import 'firebase/compat/auth';
 function LoginForm(props) {
     const schema = yup
         .object({
-            username: yup.string().required('* Vui lòng điền vào trường này'),
+            username: yup
+                .string()
+                .required('* Vui lòng nhập tên tài khoản của bạn'),
             email: yup
                 .string()
-                .required('* Vui lòng điền vào trường này')
+                .required('* Vui lòng nhập địa chỉ email')
                 .email('Vui lòng điền địa chỉ email hợp lệ'),
-            password: yup
-                .string()
-                .required('* Vui lòng điền vào trường này')
-                .min(8, 'Vui lòng nhập ít nhất 8 kí tự'),
+            password: yup.string().required('* Vui lòng nhập mật khẩu'),
         })
         .required();
     const {
@@ -54,7 +53,7 @@ function LoginForm(props) {
     return (
         <div className="mt-14 w-full ">
             <div className="container px-4 lg:px-14 mx-auto flex items-center justify-center ">
-                <div className="max-w-xs w-full space-y-6 my-8 px-6 py-8 shadow-md shadow-gray-300">
+                <div className="max-w-xs w-full space-y-6 my-8 md:px-6 py-8 md:shadow-md md:shadow-gray-300">
                     <div className="text-center text-xl font-medium">
                         <FontAwesomeIcon icon="fa-solid fa-user" />
                     </div>
@@ -62,7 +61,7 @@ function LoginForm(props) {
                         className="mt-8 space-y-4"
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <div className="shadow-sm">
+                        <div>
                             <TextField
                                 control={control}
                                 name="username"

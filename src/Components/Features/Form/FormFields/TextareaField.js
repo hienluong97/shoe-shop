@@ -1,11 +1,11 @@
 import React from 'react';
 import { useController } from 'react-hook-form';
 
-function EmailField(props) {
+function TextareaField(props) {
     const { field } = useController(props);
     return (
         <div className="mt-2">
-            <input
+            <textarea
                 {...field}
                 placeholder={props.name}
                 name={props.name}
@@ -18,4 +18,4 @@ function EmailField(props) {
     );
 }
 
-export default EmailField;
+export default TextareaField;

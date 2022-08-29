@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import ProductSlideLoading from '~/Components/ProductSlideLoading';
 import productsApi from '~/API/ProductsApi';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import ProductThumbnail from '~/Components/ProductThumbnail';
 
 function Bestsale() {
@@ -57,9 +58,12 @@ function Bestsale() {
                 <p className="relative text-base font-semibold pl-2 mb-4 bg-amber-300 section-title">
                     Giảm giá sốc
                 </p>
-                <p className="text-xs opacity-70 font-medium hover:cursor-pointer hover:opacity-100 ">
+                <Link
+                    to="/products"
+                    className="text-xs opacity-70 font-medium hover:cursor-pointer hover:opacity-100 "
+                >
                     ...xem tất cả
-                </p>
+                </Link>
             </div>
             <div className=" sm:-mx-2 md:-mx-2 lg:-mx-2">
                 {loading ? (
