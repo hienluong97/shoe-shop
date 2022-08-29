@@ -10,13 +10,13 @@ import { useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 const config = {
-    apiKey: 'AIzaSyByeFnEuM1w_nyksQSQaVczNidu0uD5oMA',
-    authDomain: 'shoesweb-4d916.firebaseapp.com',
-    projectId: 'shoesweb-4d916',
-    storageBucket: 'shoesweb-4d916.appspot.com',
-    messagingSenderId: '82930657164',
-    appId: '1:82930657164:web:a42dbecddc93b12ae998a9',
-    measurementId: 'G-H6Q1YG3NVN',
+    apiKey: process.env.REACT_APP_FIREBASE_API,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    // projectId: 'shoesweb-4d916',
+    // storageBucket: 'shoesweb-4d916.appspot.com',
+    // messagingSenderId: '82930657164',
+    // appId: '1:82930657164:web:a42dbecddc93b12ae998a9',
+    // measurementId: 'G-H6Q1YG3NVN',
 };
 firebase.initializeApp(config);
 

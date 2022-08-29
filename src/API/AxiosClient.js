@@ -29,7 +29,7 @@ const getFirebaseToken = async () => {
 };
 
 const axiosClient = axios.create({
-    baseURL: 'https://shoe-data.herokuapp.com',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
         'Content-Type': 'application/json',
     },
