@@ -54,10 +54,14 @@
   
   /* Style the checkmark/indicator */
   .checkbox-container .checkmark:after {
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
+    // left: 6px;
+    // top: 2px;
+    // width: 5px;
+    // height: 10px;
+    left: 0.28rem;
+    top: 0.1rem;
+    width: 0.235rem;
+    height: 0.46875rem;
     border: solid white;
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
