@@ -46,10 +46,7 @@ function Header() {
                     </div>
                     <div className="flex-none">
                         {isLogin ? (
-                            <div
-                                to="/login"
-                                className="inline py-6 text-xs font-light leading-[3.5rem] m-2 group relative"
-                            >
+                            <div className="inline py-6 text-xs font-light leading-[3.5rem] m-2 group relative">
                                 Hi{' '}
                                 <span className="font-medium">
                                     {current.name}
