@@ -16,7 +16,7 @@ function LoginForm(props) {
         .object({
             username: yup
                 .string()
-                .required('* Vui lòng nhập tên tài khoản của bạn'),
+                .required('* Vui lòng nhập tài khoản của bạn'),
             email: yup
                 .string()
                 .required('* Vui lòng nhập địa chỉ email')
@@ -62,16 +62,16 @@ function LoginForm(props) {
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div>
-                            <TextField
+                            {/* <TextField
                                 control={control}
                                 name="username"
                                 error={errors.username}
-                            />
-                            {/* <EmailField
+                            /> */}
+                            <EmailField
                                 control={control}
                                 name="email"
                                 error={errors.email}
-                            /> */}
+                            />
                             <PasswordField
                                 control={control}
                                 name="password"

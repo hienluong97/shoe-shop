@@ -1,4 +1,3 @@
-import './App.scss';
 import DefaultLayout from './Layouts';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';

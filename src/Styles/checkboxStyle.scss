@@ -1,8 +1,8 @@
 .checkbox-container {
     display: block;
     position: relative;
-    padding-left: 28px; 
-    margin-top: 10px;  
+    padding-left: 1.25rem; 
+    margin-top: 0.5rem;  
     cursor: pointer;
     font-size: 0.675rem;
     font-weight: 300;
@@ -24,7 +24,7 @@
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: 0;
     height: 16px;
     width: 16px;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useParams } from 'react-router-dom';
 import productsApi from '~/API/ProductsApi';
 import { useDispatch } from 'react-redux';
@@ -7,6 +6,7 @@ import ProductDetailLoading from '../Components/ProductDetailLoading';
 import ProductQuantity from './ProductQuantity';
 import { incrementByAmount } from '../Components/Features/Cart/cartSlice';
 import { useSnackbar } from 'notistack';
+import { Link } from 'react-router-dom';
 
 function ProductDetail(props) {
     const { id } = useParams();
@@ -29,7 +29,7 @@ function ProductDetail(props) {
         })();
     }, []);
 
-    const handleChangeValue = (value) => {
+    const handleUpdateValue = (value) => {
         setQuantity(value);
     };
     const handleIncreValue = () => {
@@ -89,52 +89,9 @@ function ProductDetail(props) {
                                 )}
                             </p>
                             <div className="mt-4 w-32 ">
-                                {/* <div className="flex items-center border border-spacing-2 border-black">
-                                    <div
-                                        className="border-r border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
-                                        onClick={() => {
-                                            if (quantity < 2) {
-                                                handleChangeValue(1);
-                                                alert(
-                                                    'Nhập ít nhất 1 sản phẩm',
-                                                );
-                                            } else {
-                                                handleDecreValue(quantity);
-                                            }
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon="fa-solid fa-minus "
-                                            className="p-2.5  text-xs "
-                                        />
-                                    </div>
-                                    <div className="grow text-center">
-                                        <input
-                                            className="w-full outline-none text-center"
-                                            type="text"
-                                            value={quantity}
-                                            onChange={(e) =>
-                                                handleChangeValue(
-                                                    Number(e.target.value),
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                    <div
-                                        className="border-l border-black leading-4 hover:cursor-pointer hover:text-white hover:bg-black"
-                                        onClick={() => {
-                                            handleIncreValue(quantity);
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon="fa-solid fa-plus "
-                                            className="p-2.5 text-xs"
-                                        />
-                                    </div>
-                                </div> */}
                                 <ProductQuantity
                                     quantity={quantity}
-                                    onChange={handleChangeValue}
+                                    onUpdate={handleUpdateValue}
                                     onIncre={handleIncreValue}
                                     onDecre={handleDecreValue}
                                 />
@@ -148,9 +105,12 @@ function ProductDetail(props) {
                                 >
                                     Thêm vào giỏ hàng
                                 </div>
-                                <div className="text-xs font-normal px-4 py-1.5 inline-block border border-spacing-2 border-black hover:cursor-pointer hover:text-white hover:bg-black">
+                                <Link
+                                    to="/cart"
+                                    className="text-xs font-normal px-4 py-1.5 inline-block border border-spacing-2 border-black hover:cursor-pointer hover:text-white hover:bg-black"
+                                >
                                     Mua ngay
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
