@@ -22,6 +22,7 @@ body {
 }
 .active {
   border-bottom: 1.5px solid rgb(252, 211, 77);
+  font-weight: 400;
   animation: underline 0.5s linear  forwards ;
 }
 @keyframes underline {
