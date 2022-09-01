@@ -10,7 +10,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API,
-    authDomain: 'shoe-shop-mauve.vercel.app',
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     // projectId: 'shoesweb-4d916',
     // storageBucket: 'shoesweb-4d916.appspot.com',
     // messagingSenderId: '82930657164',
