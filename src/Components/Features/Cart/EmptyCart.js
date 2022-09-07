@@ -13,15 +13,15 @@ function EmptyCart() {
                 />
             </div>
             <div>
-                <p className="mb-4 text-sm font-normal ">
+                <p className="mb-4 text-base font-normal ">
                     {' '}
                     Bạn chưa có sản phẩm nào trong giỏ hàng
                 </p>
                 <Link
                     to="/products"
-                    className="text-xs font-normal text-center py-1.5 px-4 border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                    className="text-sm font-normal text-center py-1.5 px-4 border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                 >
-                    Tiếp tục mua sắm
+                    TIẾP TỤC MUA SẮM
                 </Link>
             </div>
         </div>

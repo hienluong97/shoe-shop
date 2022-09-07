@@ -73,7 +73,7 @@ function Products() {
         setOrder('desc');
     };
     const handleFiltersChange = (newFilters) => {
-        setFilters((prev) => {
+        setFilters(prev => {
             return { ...prev, ...newFilters };
         });
     };
@@ -96,7 +96,7 @@ function Products() {
                     </p>
                 </div>
                 <div
-                    className="fixed bottom-4 right-4 z-30 text-sm font-medium px-4 py-1 mb-4 inline-block border border-solid border-gray-300  text-white bg-black hover:text-black hover:bg-white hover:cursor-pointer lg:hidden animate-pulse"
+                    className="fixed bottom-4 right-4 z-30 text-sm font-medium px-4 py-1 mb-4 inline-block border border-solid border-gray-500  text-white bg-black hover:text-black hover:bg-white hover:cursor-pointer lg:hidden animate-pulse"
                     onClick={handleOpenFilter}
                 >
                     BỘ LỌC
@@ -133,13 +133,13 @@ function Products() {
                             {filterProductList.length ? (
                                 <div className="flex border border-solid border-gray-500">
                                     <p
-                                        className="text-sm font-light px-4 py-1  hover:cursor-pointer hover:text-white hover:bg-black "
+                                        className="text-sm font-medium px-4 py-1  hover:cursor-pointer hover:text-white hover:bg-black "
                                         onClick={handleOrderChangeAsc}
                                     >
                                         Giá tăng dần
                                     </p>
                                     <p
-                                        className="text-sm font-light px-4 py-1 border-l border-solid border-gray-500 hover:cursor-pointer hover:text-white hover:bg-black"
+                                        className="text-sm font-medium px-4 py-1 border-l border-solid border-gray-500 hover:cursor-pointer hover:text-white hover:bg-black"
                                         onClick={handleOrderChangeDesc}
                                     >
                                         Giá giảm dần
