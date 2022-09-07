@@ -20,9 +20,9 @@ function Header() {
             <div className="container px-4 lg:px-8 mx-auto">
                 <div className="hidden lg:flex">
                     <div >
-                        <p className="leading-[5rem] text-4xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 ">
+                        <Link to="/" className="leading-[5rem] text-4xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 ">
                             MStore
-                        </p>
+                        </Link>
                     </div>
                     <div className="flex-1 text-center space-x-6">
                         <NavLink
@@ -104,9 +104,9 @@ function Header() {
                     </div>
 
                     <div className="w-1/3 text-center">
-                        <p className="leading-[4rem] text-2xl text-amber-400 font-bold text-shadow-md shadow-yellow-200 ">
+                        <Link to='/'className="leading-[4rem] text-2xl text-amber-400 font-bold text-shadow-md shadow-yellow-200 ">
                             MStore
-                        </p>
+                        </Link>
                     </div>
 
                     <div className="w-1/3 text-right">
@@ -158,9 +158,9 @@ function Header() {
                             }`}
                         >
                             <div className="flex items-center justify-center text-center mt-8">
-                                <span className="mb-2.5 text-xl font-semibold text-black">
+                                <Link to="/" className="mb-2.5 text-xl font-semibold text-black">
                                     MStore
-                                </span>
+                                </Link>
                             </div>
                             <div className="flex flex-col text-center" onClick={() => setIsSidebarOpen(false)}>
                                 <NavLink
