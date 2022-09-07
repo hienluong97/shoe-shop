@@ -23,8 +23,8 @@ function ColorFilter({ filters, onChange }) {
     }, [filters.active]);
 
     return (
-        <div>
-            <h6 className="text-sm font-medium mt-3">Màu sắc</h6>
+        <div className="mb-8">
+            <h6 className="text-xl font-medium mt-3">MÀU SẮC</h6>
             <div>
                 {colorsList.map((color) => {
                     return (

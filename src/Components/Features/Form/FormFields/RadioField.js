@@ -35,7 +35,7 @@ function RadioField(props) {
                             id={method.id}
                         />
                         <label
-                            className="text-xs font-normal pl-2"
+                            className="text-sm font-normal pl-2"
                             htmlFor={method.id}
                         >
                             <FontAwesomeIcon

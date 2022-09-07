@@ -56,14 +56,14 @@ function CheckOut() {
     };
 
     return (
-        <div className="my-20">
-            <div className="container px-4 lg:px-14 mx-auto">
+        <div className="my-28">
+            <div className="container px-4 lg:px-8 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid grid-cols-1 xl:grid-cols-3 xl:grid-flow-col grid-flow-row xl:grid-rows-3  gap-4">
                         <div className="col-span-1 xl:row-span-2  border border-solid border-spacing-2 border-gray-400 shadow-sm">
                             <div className="p-4">
-                                <p className="mb-6 text-sm font-medium">
-                                    Thông tin người dùng
+                                <p className="mb-6 text-base font-medium">
+                                    THÔNG TIN NGƯỜI DÙNG
                                 </p>
                                 <TextField
                                     control={control}
@@ -89,8 +89,8 @@ function CheckOut() {
                         </div>
                         <div className="col-span-1 xl:row-span-1 border border-solid border-spacing-2 border-gray-400 shadow-sm">
                             <div className="p-4 space-y-2">
-                                <p className="mb-6 text-sm font-medium">
-                                    Phương thức thanh toán
+                                <p className="mb-6 text-base font-medium">
+                                    HÌNH THỨC THANH TOÁN
                                 </p>
                                 <RadioField
                                     control={control}
@@ -101,11 +101,11 @@ function CheckOut() {
                         </div>
                         <div className=" col-span-1 xl:row-span-3 xl:col-span-2 border border-solid border-spacing-2 border-gray-400 shadow-sm">
                             <div className="p-4">
-                                <p className="mb-6 text-sm font-medium">
-                                    Thông tin đơn hàng
+                                <p className="mb-6 text-base font-medium">
+                                    THÔNG TIN ĐƠN HÀNG
                                 </p>
                                 <div>
-                                    <div className="flex items-center text-sm font-medium ">
+                                    <div className="flex items-center text-base font-medium ">
                                         <div className="flex w-full md:w-1/2 items-center ">
                                             Sản phẩm
                                         </div>
@@ -121,12 +121,11 @@ function CheckOut() {
                                             </div>
                                         </div>
                                     </div>
-                                    {cartProducts.map((product) => {
-                                        const quantity = product.quantity;
+                                    {cartProducts.map((product) => {                                       
                                         return (
                                             <div
                                                 key={product.id}
-                                                className="mb-3 flex items-center text-xs font-light bg-slate-50"
+                                                className="mb-3 flex items-center text-sm font-nomal bg-slate-50"
                                             >
                                                 <div className="flex flex-col md:flex-row w-1/2 items-center ">
                                                     <div>
@@ -134,6 +133,7 @@ function CheckOut() {
                                                             src={product.image}
                                                             width={140}
                                                             height={140}
+                                                            alt={product.title}
                                                         />
                                                     </div>
                                                     <div className="pr-4 w-full truncate">
@@ -179,7 +179,7 @@ function CheckOut() {
                                     })}
                                 </div>
                                 <div>
-                                    <div className="flex justify-between  text-sm font-nomal">
+                                    <div className="flex justify-between  text-base font-nomal">
                                         <div className="lg:w-full">Tổng:</div>
                                         <div>
                                             {' '}
@@ -189,7 +189,7 @@ function CheckOut() {
                                             }).format(subTotal)}
                                         </div>
                                     </div>
-                                    <div className="flex justify-between  text-sm font-nomal">
+                                    <div className="flex justify-between  text-base font-nomal">
                                         <div className="lg:w-full">Ưu đãi:</div>
                                         <div>
                                             {' '}
@@ -199,7 +199,7 @@ function CheckOut() {
                                             }).format(orderInfor.discount)}
                                         </div>
                                     </div>
-                                    <div className="flex justify-between  text-sm font-nomal">
+                                    <div className="flex justify-between  text-base font-nomal">
                                         <div className="lg:w-full">
                                             Phí ship:
                                         </div>
@@ -211,7 +211,7 @@ function CheckOut() {
                                             }).format(orderInfor.shipping)}
                                         </div>
                                     </div>
-                                    <div className="flex justify-between  text-sm font-nomal">
+                                    <div className="flex justify-between  text-base font-nomal">
                                         <div className="lg:w-full">
                                             Thành tiền:
                                         </div>
@@ -224,9 +224,9 @@ function CheckOut() {
                                     </div>
                                     <button
                                         type="submit"
-                                        className="w-full mt-3 text-xs font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                        className="w-full mt-3 text-sm font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                     >
-                                        Hoàn tất đơn hàng
+                                        HOÀN TẤT ĐƠN HÀNG
                                     </button>
                                 </div>
                             </div>

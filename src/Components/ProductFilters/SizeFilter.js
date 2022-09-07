@@ -23,8 +23,8 @@ function SizeFilter({ filters, onChange }) {
     }, [filters.active]);
 
     return (
-        <div>
-            <h6 className="text-sm font-medium mt-3">Kích cỡ</h6>
+        <div className="mb-8">
+            <h6 className="text-xl font-medium mt-3">KÍCH CỠ</h6>
             {sizesList.map((size) => {
                 return (
                     <label key={size} className="checkbox-container">

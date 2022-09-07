@@ -53,7 +53,7 @@ function Register() {
 
     return (
         <div className="mt-14 w-full ">
-            <div className="container px-4 lg:px-14 mx-auto flex items-center justify-center">
+            <div className="container px-4 lg:px-8 mx-auto flex items-center justify-center">
                 <div className="max-w-xs w-full space-y-8 my-8 md:px-6 py-8 md:shadow-md md:shadow-gray-300">
                     <div>
                         <h2 className="text-center text-xl font-medium">

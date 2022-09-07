@@ -50,10 +50,10 @@ function Footer() {
     ];
     return (
         <div className="footer py-10 shadow-sm shadow-gray-500">
-            <div className="container px-4 lg:px-14 mx-auto">
+            <div className="container px-4 lg:px-8 mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-start -mx-2.5 mb-4">
-                    <div className="px-2.5 mb-5 w-full md:w-2/6 ">
-                        <h5 className="text-xs font-nomal mb-2 md:mb-4">
+                    <div className="px-2.5 mb-7 w-full md:w-2/6 ">
+                        <h5 className="text-base font-nomal mb-2 md:mb-4">
                             PHƯƠNG THỨC THANH TOÁN
                         </h5>
                         <div className="flex flex-wrap items-baseline">
@@ -62,15 +62,15 @@ function Footer() {
                                     <img
                                         src={method.url}
                                         alt={method.name}
-                                        width={40}
-                                        height={40}
+                                        width={30}
+                                        height={30}
                                     />
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className="px-2.5 mb-5 w-full md:w-2/6">
-                        <h6 className="text-xs font-nomal mb-2 md:mb-4">
+                    <div className="px-2.5 mb-7 w-full md:w-2/6">
+                        <h6 className="text-base font-nomal mb-2 md:mb-4">
                             CHÍNH SÁCH
                         </h6>
 
@@ -78,32 +78,32 @@ function Footer() {
                             <p key={post.id}>
                                 <Link
                                     to={post.path}
-                                    className="text-2xs hover:underline hover:underline-offset-2"
+                                    className="text-sm hover:underline hover:underline-offset-2"
                                 >
                                     {post.title}
                                 </Link>
                             </p>
                         ))}
                     </div>
-                    <div className="px-2.5 mb-5 w-full md:w-2/6">
-                        <h6 className="text-xs font-nomal mb-2 md:mb-4">
+                    <div className="px-2.5 mb-7 w-full md:w-2/6">
+                        <h6 className="text-base font-nomal mb-2 md:mb-4">
                             CONTACT INFO
                         </h6>
-                        <p className="text-2xs leading-6.5">
+                        <p className="text-sm leading-6.5">
                             <FontAwesomeIcon
                                 className="pr-2 "
                                 icon="fa-solid fa-location-dot"
                             />
                             203 Fake St. Mountain View, California, USA
                         </p>
-                        <p className="text-2xs leading-6.5">
+                        <p className="text-sm leading-6.5">
                             <FontAwesomeIcon
                                 className="pr-2 "
                                 icon="fa-solid fa-phone"
                             />{' '}
                             +2 392 3929 210
                         </p>
-                        <p className="text-2xs leading-6.5">
+                        <p className="text-sm leading-6.5">
                             <FontAwesomeIcon
                                 className="pr-2 "
                                 icon="fa-solid fa-envelope"
@@ -113,7 +113,7 @@ function Footer() {
                     </div>
                 </div>
                 <hr />
-                <p className="text-2xs text-center mt-4">
+                <p className="text-sm text-center m-8">
                     Copyright ©2022 All rights reserved | This template is made
                     with{' '}
                     <FontAwesomeIcon

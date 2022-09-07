@@ -49,8 +49,8 @@ function ProductDetail(props) {
     };
 
     return (
-        <div className="my-14">
-            <div className="container px-4 lg:px-14 mx-auto">
+        <div className="my-16">
+            <div className="container px-4 lg:px-8 mx-auto">
                 {loading ? (
                     <ProductDetailLoading />
                 ) : (
@@ -65,7 +65,7 @@ function ProductDetail(props) {
                             />
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <h3 className="text-md font-medium">
+                            <h3 className="text-lg font-medium">
                                 {' '}
                                 {product.title}
                             </h3>
@@ -73,14 +73,14 @@ function ProductDetail(props) {
                                 {product.description}
                             </p>
                             <p className="mt-4 ">
-                                <span className="text-md font-medium">
+                                <span className="text-base font-medium">
                                     {new Intl.NumberFormat('vi-VN', {
                                         style: 'currency',
                                         currency: 'VND',
                                     }).format(product.salePrice)}
                                 </span>
                                 {product.promotionPercent === 0 ? null : (
-                                    <span className="text-xs mx-2 bg-yellow-200 line-through">
+                                    <span className="text-sm mx-2 bg-yellow-200 line-through">
                                         {new Intl.NumberFormat('vi-VN', {
                                             style: 'currency',
                                             currency: 'VND',
@@ -98,7 +98,7 @@ function ProductDetail(props) {
                             </div>
                             <div className="mt-5 flex ">
                                 <div
-                                    className="text-xs font-normal mr-2 px-4 py-1.5 inline-block border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                    className="text-sm font-normal mr-2 px-4 py-1.5 inline-block border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                     onClick={() =>
                                         handleSubmit(product, quantity)
                                     }
@@ -107,7 +107,7 @@ function ProductDetail(props) {
                                 </div>
                                 <Link
                                     to="/cart"
-                                    className="text-xs font-normal px-4 py-1.5 inline-block border border-spacing-2 border-black hover:cursor-pointer hover:text-white hover:bg-black"
+                                    className="text-sm font-normal px-4 py-1.5 inline-block border border-spacing-2 border-black hover:cursor-pointer hover:text-white hover:bg-black"
                                 >
                                     Mua ngay
                                 </Link>

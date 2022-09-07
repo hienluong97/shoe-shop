@@ -5,9 +5,9 @@ import Trending from '~/Components/Trending';
 
 function Home() {
     return (
-        <div className="my-14">
+        <div className="my-16 lg:my-20">
             <Videobgr />
-            <div className="container px-4 lg:px-14 mx-auto">
+            <div className="container px-4 lg:px-8 mx-auto">
                 <Bestsale />
                 <Trending />
             </div>

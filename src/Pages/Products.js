@@ -84,11 +84,11 @@ function Products() {
     };
 
     return (
-        <div className="my-20">
-            <div className="container px-4 lg:px-14 mx-auto">
-                <div className="my-8">
-                    <h4>For You</h4>
-                    <p className="text-xs font-light">
+        <div className="my-20 lg:my-28">
+            <div className="container px-4 lg:px-8 mx-auto">
+                <div className="mb-8">
+                    <h4 className="text-xl font-semibold mb-3">FOR YOU</h4>
+                    <p className="text-base font-light">
                         Tất cả những sản phẩm Mới nhất nằm trong BST được mở bán
                         Hàng Tuần sẽ được cập nhật liên tục tại đây. Chắc chắn
                         bạn sẽ tìm thấy những sản phẩm Đẹp Nhất - Vừa Vặn Nhất -
@@ -96,10 +96,10 @@ function Products() {
                     </p>
                 </div>
                 <div
-                    className="fixed bottom-4 right-4 z-30 text-xs font-medium px-4 py-1 mb-4 inline-block border border-solid border-gray-300  text-white bg-black hover:text-black hover:bg-white hover:cursor-pointer lg:hidden"
+                    className="fixed bottom-4 right-4 z-30 text-sm font-medium px-4 py-1 mb-4 inline-block border border-solid border-gray-300  text-white bg-black hover:text-black hover:bg-white hover:cursor-pointer lg:hidden animate-pulse"
                     onClick={handleOpenFilter}
                 >
-                    Bộ lọc
+                    BỘ LỌC
                 </div>
 
                 <div className="flex justify-between">
@@ -131,15 +131,15 @@ function Products() {
                     <div className="w-full lg:w-3/4">
                         <div className="flex  justify-center md:justify-end">
                             {filterProductList.length ? (
-                                <div className="flex">
+                                <div className="flex border border-solid border-gray-500">
                                     <p
-                                        className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black "
+                                        className="text-sm font-light px-4 py-1  hover:cursor-pointer hover:text-white hover:bg-black "
                                         onClick={handleOrderChangeAsc}
                                     >
                                         Giá tăng dần
                                     </p>
                                     <p
-                                        className="text-2xs font-light px-4 py-1 border border-solid border-gray-300 hover:cursor-pointer hover:text-white hover:bg-black"
+                                        className="text-sm font-light px-4 py-1 border-l border-solid border-gray-500 hover:cursor-pointer hover:text-white hover:bg-black"
                                         onClick={handleOrderChangeDesc}
                                     >
                                         Giá giảm dần
@@ -147,7 +147,7 @@ function Products() {
                                 </div>
                             ) : null}
                         </div>
-                        <div className="flex flex-wrap my-4 sm:-mx-2 md:-mx-2 lg:-mx-2.5">
+                        <div className="flex flex-wrap my-8 sm:-mx-2 md:-mx-2 lg:-mx-2.5">
                             {loading ? (
                                 <ProductlistLoading />
                             ) : (

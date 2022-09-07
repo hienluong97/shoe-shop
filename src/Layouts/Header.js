@@ -17,28 +17,28 @@ function Header() {
 
     return (
         <div className="w-full h-16 lg:h-20 bg-white shadow-sm shadow-gray-200 fixed top-0 z-20">
-            <div className="container px-4 lg:px-14 mx-auto">
+            <div className="container px-4 lg:px-8 mx-auto">
                 <div className="hidden lg:flex">
                     <div >
                         <p className="leading-[5rem] text-4xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 ">
                             MStore
                         </p>
                     </div>
-                    <div className="flex-1 text-center">
+                    <div className="flex-1 text-center space-x-6">
                         <NavLink
-                            className=" leading-[5rem] text-base font-semibold m-2"
+                            className=" leading-[5rem] text-base font-semibold pb-1"
                             to="/"
                         >
                             TRANG CHỦ
                         </NavLink>
                         <NavLink
-                            className="leading-[5rem] text-base font-semibold m-2"
+                            className="leading-[5rem] text-base font-semibold pb-1"
                             to="/products"
                         >
                             SẢN PHẨM
                         </NavLink>
                         <NavLink
-                            className="leading-[5rem] text-base font-semibold m-2"
+                            className="leading-[5rem] text-base font-semibold pb-1"
                             to="/contact"
                         >
                             LIÊN HỆ
@@ -84,7 +84,7 @@ function Header() {
                                     className="text-base leading-[5rem]"
                                     icon="fa-solid fa-cart-plus"
                                 />
-                                <span className="absolute px-1 text-3xs font-medium text-white bg-red-600 -top-1 -right-1.5 rounded-full">
+                                <span className="absolute px-1 text-2xs font-medium text-white bg-red-600 -top-3 -right-1.5 rounded-full">
                                     {totalItems}
                                 </span>
                             </p>
@@ -104,7 +104,7 @@ function Header() {
                     </div>
 
                     <div className="w-1/3 text-center">
-                        <p className="leading-[4rem] text-2xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 ">
+                        <p className="leading-[4rem] text-2xl text-amber-400 font-bold text-shadow-md shadow-yellow-200 ">
                             MStore
                         </p>
                     </div>
@@ -128,7 +128,7 @@ function Header() {
                                     className="text-base leading-[4rem]"
                                     icon="fa-solid fa-cart-plus"
                                 />
-                                <span className="absolute px-1 text-3xs font-medium text-white bg-red-600 -top-1 -right-1.5 rounded-full">
+                                <span className="absolute px-1 text-2xs font-medium text-white bg-red-600 -top-3 -right-1.5 rounded-full">
                                     {totalItems}
                                 </span>
                             </p>

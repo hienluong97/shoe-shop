@@ -11,11 +11,11 @@ import {
 import EmptyCart from './EmptyCart.js';
 
 function Cart() {
-    const cartProducts = useSelector((state) => state.cart);
+    const cartProducts = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
     const handleRemoveItem = (id) => {
-        if (window.confirm('Bạn muốn xoá sản phẩm')) {
+        if (window.confirm('Bạn muốn xoá sản phẩm?')) {
             dispatch(removeItem(id));
         } else {
             return;
@@ -42,14 +42,14 @@ function Cart() {
     }, 0);
 
     return (
-        <div className="my-20">
-            <div className="container px-4 lg:px-14 mx-auto">
+        <div className="my-28">
+            <div className="container px-4 lg:px-8 mx-auto">
                 {totalItems === 0 ? (
                     <EmptyCart />
                 ) : (
                     <div className="mt-6 flex flex-col lg:flex-row justify-center lg:justify-between">
                         <div className="w-full lg:w-3/4 mr-6 flex flex-col">
-                            <div className="flex items-center text-sm font-medium ">
+                            <div className="flex items-center text-xl font-medium ">
                                 <div className="flex w-full md:w-1/3 items-center ">
                                     Sản phẩm
                                 </div>
@@ -74,7 +74,7 @@ function Cart() {
                                 return (
                                     <div
                                         key={product.id}
-                                        className="mb-3 flex items-center text-xs font-light bg-slate-50"
+                                        className="mb-3 flex items-center text-base  font-normal bg-slate-50"
                                     >
                                         <div className="flex flex-col md:flex-row w-1/3 items-center ">
                                             <div>
@@ -82,6 +82,7 @@ function Cart() {
                                                     src={product.image}
                                                     width={140}
                                                     height={140}
+                                                    alt={product.title}
                                                 />
                                             </div>
                                             <div className="md:pl-4 w-full truncate">
@@ -125,7 +126,7 @@ function Cart() {
                                                         >
                                                             <FontAwesomeIcon
                                                                 icon="fa-solid fa-minus "
-                                                                className="block p-1  text-2xs "
+                                                                className="block p-2  text-xs "
                                                             />
                                                         </div>
 
@@ -162,7 +163,7 @@ function Cart() {
                                                         >
                                                             <FontAwesomeIcon
                                                                 icon="fa-solid fa-plus "
-                                                                className="block p-1  text-2xs"
+                                                                className="block p-2  text-xs"
                                                             />
                                                         </div>
                                                     </div>
@@ -183,7 +184,7 @@ function Cart() {
                                             <div className="w-1/5 text-right lg:text-left">
                                                 <FontAwesomeIcon
                                                     icon="fa-solid fa-trash-can "
-                                                    className="p-2.5 text-2xs hover:opacity-70 hover:cursor-pointer"
+                                                    className="p-2.5 text-xs hover:opacity-70 hover:cursor-pointer"
                                                     onClick={() => {
                                                         handleRemoveItem(
                                                             product.id,
@@ -197,11 +198,11 @@ function Cart() {
                             })}
                         </div>
                         <div className="w-full lg:w-1/4 p-3 shadow-md">
-                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-sm font-nomal">
+                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-base font-nomal">
                                 <div className="lg:w-full">Tổng sản phẩm</div>
                                 <div>{totalItems}</div>
                             </div>
-                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-sm font-nomal">
+                            <div className="flex justify-between lg:flex-wrap xl:flex-nowrap text-base font-nomal">
                                 <div className="lg:w-full">Thành tiền</div>
                                 <div>
                                     {new Intl.NumberFormat('vi-VN', {
@@ -213,15 +214,15 @@ function Cart() {
                             <div className="mt-5 flex flex-col">
                                 <Link
                                     to="/checkout"
-                                    className="text-xs font-normal text-center  py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                    className="text-báe font-normal text-center  py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                 >
-                                    Đặt hàng
+                                    ĐẶT HÀNG
                                 </Link>
                                 <Link
                                     to="/products"
-                                    className="mt-3 text-xs font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                    className="mt-3 text-báe font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
                                 >
-                                    Tiếp tục mua sắm
+                                    TIẾP TỤC MUA SẮM
                                 </Link>
                             </div>
                         </div>

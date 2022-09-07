@@ -26,9 +26,9 @@ function ProductThumbnail({ product }) {
                     src={product.image}
                     alt={product.title}
                 />
-                <div className="text-xs flex justify-between absolute bottom-0 w-full p-1.5 bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
+                <div className="text-sm flex justify-between absolute bottom-0 w-full p-2 leading-[1rem] bg-slate-200 divide-x divide-gray-700 invisible group-hover:visible animate-bounce">
                     <p
-                        className="text-2xs cursor-pointer hover:opacity-70"
+                        className="text-xs cursor-pointer hover:opacity-70"
                         onClick={() => handleAddItem(product)}
                     >
                         Thêm vào giỏ hàng
@@ -46,16 +46,16 @@ function ProductThumbnail({ product }) {
                 </div>
             </div>
             <div className="my-2">
-                <p className="text-xs font-light truncate">{product.title}</p>
+                <p className="text-sm font-light truncate">{product.title}</p>
                 <div className="pb-2 ">
-                    <span className="text-xs font-medium">
+                    <span className="text-sm font-medium">
                         {new Intl.NumberFormat('vi-VN', {
                             style: 'currency',
                             currency: 'VND',
                         }).format(product.originalPrice)}
                     </span>
                     {product.promotionPercent === 0 ? null : (
-                        <span className="text-3xs mx-2 bg-yellow-200">
+                        <span className="text-xs mx-2 bg-yellow-200">
                             -{product.promotionPercent}%
                         </span>
                     )}

@@ -55,12 +55,12 @@ function Bestsale() {
     return (
         <div className="mt-12">
             <div className="flex justify-between items-baseline">
-                <p className="relative text-base font-semibold pl-2 mb-4 bg-amber-300 section-title">
+                <p className="relative text-2xl font-semibold pl-2 mb-4 bg-amber-300 section-title">
                     Giảm giá sốc
                 </p>
                 <Link
                     to="/products"
-                    className="text-xs opacity-70 font-medium hover:cursor-pointer hover:opacity-100 "
+                    className="text-sm opacity-70 font-medium hover:cursor-pointer hover:opacity-100 "
                 >
                     ...xem tất cả
                 </Link>
