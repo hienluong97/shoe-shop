@@ -118,7 +118,7 @@ function Header() {
                             <input
                                 type="text"
                                 placeholder="Tìm kiếm"
-                                className="text-base py-1 pl-1 w-2 focus:w-fit font-light placeholder:pl-1 placeholder:text-2xs outline-none"
+                                className="text-base py-1 pl-1 w-2 font-light placeholder:pl-1 placeholder:text-2xs outline-none"
                             />
                         </p>
 
@@ -134,15 +134,14 @@ function Header() {
                             </p>
                         </Link>
                     </div>
-                </div>
 
-                <div
+                    <div
                     className={`relative min-h-screen ${
                         isSidebarOpen ? 'block' : 'hidden'
                     }`}
-                >
+                    >
                     {/* box */}
-                    <div className="flex">
+                        <div className="flex">
                         {/* Sidebar Overlay */}
                         <div
                             onClick={() => setIsSidebarOpen(false)}
@@ -152,7 +151,7 @@ function Header() {
                         />
                         {/* Sidebar */}
                         <div
-                            className={`fixed inset-y-0 left-0 z-30 w-1/2 sm:w-1/3 overflow-y-auto transition duration-1000 ease-out transform translate-x-0 bg-white border-r-2 ${
+                            className={`fixed inset-y-0 left-0 z-30 w-1/2 sm:w-1/3 overflow-y-auto transition duration-500 ease-out transform translate-x-0 bg-white border-r-2 ${
                                 isSidebarOpen
                                     ? 'ease-out translate-x-0'
                                     : 'ease-in -translate-x-full'
@@ -163,7 +162,7 @@ function Header() {
                                     MStore
                                 </span>
                             </div>
-                            <div className="flex flex-col text-center ">
+                            <div className="flex flex-col text-center" onClick={() => setIsSidebarOpen(false)}>
                                 <NavLink
                                     className="text-base font-medium m-1.5"
                                     to="/"
@@ -195,7 +194,7 @@ function Header() {
                                 ) : (
                                     <Link
                                         to="/login"
-                                        className="text-base font-medium leading-[4rem] m-2 hover:cursor-pointer"
+                                        className="text-base font-medium m-2 hover:cursor-pointer"
                                     >
                                         Đăng nhập
                                     </Link>
@@ -203,7 +202,8 @@ function Header() {
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>                        
+                </div>                                      
             </div>
         </div>
     );
