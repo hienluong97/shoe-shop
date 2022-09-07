@@ -21,8 +21,8 @@ body {
   text-rendering: optimizeSpeed;
 }
 .active {
-  border-bottom: 1.5px solid rgb(252, 211, 77);
-  font-weight: 400;
+  border-bottom: 2px solid rgb(252, 211, 77);
+  font-weight:800;
   animation: underline 0.5s linear  forwards ;
 }
 @keyframes underline {
@@ -39,8 +39,8 @@ body {
   position:absolute;  
   height: 0;
   width: 0;
-  border-top: 0.75rem solid transparent;
-  border-bottom: 0.75rem solid transparent;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
   border-left: 1.5rem solid rgb(252, 211, 77);
 }
 
