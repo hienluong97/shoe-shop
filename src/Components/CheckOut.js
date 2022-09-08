@@ -27,8 +27,10 @@ function CheckOut() {
             email: yup
                 .string()
                 .required('* Vui lòng nhập địa chỉ email')
-                .email('*Vui lòng điền địa chỉ email hợp lệ'),
-            phone: yup.number().required('*Vui lòng điền vào trường này'),
+                .email('*Vui lòng nhập địa chỉ email hợp lệ'),
+            phone: yup.string()
+            .required("Vui lòng nhập số điện thoại")
+            .matches('^[+\0]?[0-9]{3}[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', '* Vui lòng nhập số điện thoại hợp lệ'),
             adresss: yup.string().required('* Vui lòng nhập địa chỉ của bạn'),
             paymentmethod: yup
                 .string()
@@ -224,7 +226,7 @@ function CheckOut() {
                                     </div>
                                     <button
                                         type="submit"
-                                        className="w-full mt-3 text-sm font-normal text-center py-1  border border-spacing-2 border-black text-white bg-black hover:cursor-pointer hover:text-black hover:bg-white"
+                                        className="w-full mt-3 text-sm font-normal text-center py-1  border border-spacing-2 border-black hover:cursor-pointer text-black bg-white hover:text-white hover:bg-black"
                                     >
                                         HOÀN TẤT ĐƠN HÀNG
                                     </button>

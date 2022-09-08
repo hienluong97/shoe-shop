@@ -10,7 +10,7 @@ function Header() {
         return total + product.quantity;
     }, 0);
 
-    const userData = useSelector(state => state.user);
+    const userData = useSelector((state) => state.user);
     const { current, isLogin } = userData;
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,8 +19,11 @@ function Header() {
         <div className="w-full h-16 lg:h-20 bg-white shadow-sm shadow-gray-200 fixed top-0 z-20">
             <div className="container px-4 lg:px-8 mx-auto">
                 <div className="hidden lg:flex">
-                    <div >
-                        <Link to="/" className="leading-[5rem] text-4xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 ">
+                    <div>
+                        <Link
+                            to="/"
+                            className="leading-[5rem] text-4xl text-amber-300 font-bold text-shadow-xl shadow-yellow-400 "
+                        >
                             MStore
                         </Link>
                     </div>
@@ -44,7 +47,7 @@ function Header() {
                             LIÊN HỆ
                         </NavLink>
                     </div>
-                    <div >
+                    <div>
                         {isLogin ? (
                             <div className="inline py-8 text-base font-light leading-[5rem] m-2 group relative">
                                 Hi{' '}
@@ -91,7 +94,7 @@ function Header() {
                         </Link>
                     </div>
                 </div>
- {/* small device header */}
+                {/* small device header */}
                 <div className="flex justify-between lg:hidden">
                     <div
                         className="w-1/3 leading-[4rem]"
@@ -104,7 +107,10 @@ function Header() {
                     </div>
 
                     <div className="w-1/3 text-center">
-                        <Link to='/'className="leading-[4rem] text-2xl text-amber-400 font-bold text-shadow-md shadow-yellow-200 ">
+                        <Link
+                            to="/"
+                            className="leading-[4rem] text-2xl text-amber-400 font-bold text-shadow-md shadow-yellow-200 "
+                        >
                             MStore
                         </Link>
                     </div>
@@ -133,77 +139,80 @@ function Header() {
                                 </span>
                             </p>
                         </Link>
-                    </div>
-
-                    <div
-                    className={`relative min-h-screen ${
-                        isSidebarOpen ? 'block' : 'hidden'
-                    }`}
+                    </div>                
+                    
+                    <div                        
                     >
-                    {/* box */}
+                        {/* box */}
                         <div className="flex">
-                        {/* Sidebar Overlay */}
-                        <div
-                            onClick={() => setIsSidebarOpen(false)}
-                            className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 ${
-                                isSidebarOpen ? 'block' : 'hidden'
-                            }`}
-                        />
-                        {/* Sidebar */}
-                        <div
-                            className={`fixed inset-y-0 left-0 z-30 w-1/2 sm:w-1/3 overflow-y-auto transition duration-500 ease-out transform translate-x-0 bg-white border-r-2 ${
-                                isSidebarOpen
-                                    ? 'ease-out translate-x-0'
-                                    : 'ease-in -translate-x-full'
-                            }`}
-                        >
-                            <div className="flex items-center justify-center text-center mt-8">
-                                <Link to="/" className="mb-2.5 text-xl font-semibold text-black">
-                                    MStore
-                                </Link>
-                            </div>
-                            <div className="flex flex-col text-center" onClick={() => setIsSidebarOpen(false)}>
-                                <NavLink
-                                    className="text-base font-medium m-1.5"
-                                    to="/"
-                                >
-                                    Trang chủ
-                                </NavLink>
-                                <NavLink
-                                    className="text-base font-medium m-1.5"
-                                    to="/products"
-                                >
-                                    Sản phẩm
-                                </NavLink>
-                                <NavLink
-                                    className="text-base font-medium m-1.5"
-                                    to="/contact"
-                                >
-                                    Liên hệ
-                                </NavLink>
-                                {isLogin ? (
-                                    <div
-                                        to="/login"
-                                        className="inline text-base font-medium mt-8 group relative"
-                                    >
-                                        <span className="font-medium">
-                                            {current.name}
-                                        </span>
-                                        <AccountInfo />
-                                    </div>
-                                ) : (
+                            {/* Sidebar Overlay */}
+                            <div
+                                onClick={() => setIsSidebarOpen(false)}
+                                className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50 ${
+                                    isSidebarOpen ? 'block' : 'hidden'
+                                }`}
+                            />
+                            {/* Sidebar */}
+                            <div
+                                className={`fixed inset-y-0 left-0 z-30 w-1/2 sm:w-1/3 overflow-y-auto transition duration-500 ease-out transform translate-x-0 bg-white border-r-2 ${
+                                    isSidebarOpen
+                                        ? 'ease-out translate-x-0'
+                                        : 'ease-in -translate-x-full'
+                                }`}
+                            >
+                                <div className="flex items-center justify-center text-center mt-8">
                                     <Link
-                                        to="/login"
-                                        className="text-base font-medium m-2 hover:cursor-pointer"
+                                        to="/"
+                                        className="mb-2.5 text-xl font-semibold text-black"
                                     >
-                                        Đăng nhập
+                                        MStore
                                     </Link>
-                                )}
+                                </div>
+                                <div
+                                    className="flex flex-col text-center"
+                                    onClick={() => setIsSidebarOpen(false)}
+                                >
+                                    <NavLink
+                                        className="text-base font-medium m-1.5"
+                                        to="/"
+                                    >
+                                        Trang chủ
+                                    </NavLink>
+                                    <NavLink
+                                        className="text-base font-medium m-1.5"
+                                        to="/products"
+                                    >
+                                        Sản phẩm
+                                    </NavLink>
+                                    <NavLink
+                                        className="text-base font-medium m-1.5"
+                                        to="/contact"
+                                    >
+                                        Liên hệ
+                                    </NavLink>
+                                    {isLogin ? (
+                                        <div
+                                            to="/login"
+                                            className="inline text-base font-medium mt-8 group relative"
+                                        >
+                                            <span className="font-medium">
+                                                {current.name}
+                                            </span>
+                                            <AccountInfo />
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            to="/login"
+                                            className="text-base font-medium m-2 hover:cursor-pointer"
+                                        >
+                                            Đăng nhập
+                                        </Link>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>                        
-                </div>                                      
+                </div>
             </div>
         </div>
     );

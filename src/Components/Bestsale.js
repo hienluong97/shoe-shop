@@ -60,7 +60,7 @@ function Bestsale() {
                 </p>
                 <Link
                     to="/products"
-                    className="text-sm opacity-70 font-medium hover:cursor-pointer hover:opacity-100 "
+                    className="text-sm font-medium hover:cursor-pointer hover:opacity-70 "
                 >
                     ...xem tất cả
                 </Link>
