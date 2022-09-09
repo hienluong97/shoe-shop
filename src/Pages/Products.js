@@ -6,6 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import ProductsFilters from '~/Components/ProductFilters/ProductsFilters';
 import ProductlistLoading from '~/Components/ProductlistLoading';
 import ProductThumbnail from '~/Components/ProductThumbnail';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 function Products() {
     const [filters, setFilters] = useState({
@@ -131,16 +132,16 @@ function Products() {
                     <div className="w-full lg:w-3/4">
                         <div className="flex  justify-center md:justify-end">
                             {filterProductList.length ? (
-                                <div className="flex border border-solid border-gray-500">
-                                    <p
-                                        className="text-sm font-medium px-4 py-1  hover:cursor-pointer hover:text-white hover:bg-black "
+                                <div className="flex border border-solid border-gray-500  ">
+                                    <p  
+                                        className={order==='asc'? 'text-sm font-medium px-4 py-1 hover:cursor-pointer text-white bg-black ' : 'text-sm font-medium px-4 py-1 hover:cursor-pointer hover:text-white hover:bg-black '}
                                         onClick={handleOrderChangeAsc}
                                     >
                                         Giá tăng dần
                                     </p>
                                     <p
-                                        className="text-sm font-medium px-4 py-1 border-l border-solid border-gray-500 hover:cursor-pointer hover:text-white hover:bg-black"
                                         onClick={handleOrderChangeDesc}
+                                        className={order==='desc'? "text-sm font-medium px-4 py-1 hover:cursor-pointer text-white bg-black" : "text-sm font-medium px-4 py-1 hover:cursor-pointer hover:text-white hover:bg-black"}
                                     >
                                         Giá giảm dần
                                     </p>
